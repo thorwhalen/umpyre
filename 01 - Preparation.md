@@ -34,7 +34,7 @@ of rendered markdown for you
 - Get a kaggle API token.
 - Explore datasets or competitions (that come with their datasets) and come up with three that you're interested in exploring
 
-# Extras:
+# Extras
 
 ## py2store
 Install and poke around [py2store](https://github.com/i2mint/py2store/blob/master/README.md). 
