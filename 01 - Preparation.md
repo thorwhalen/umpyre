@@ -19,6 +19,8 @@ such as more detailed instructions once you figured things out, links that where
 # Notes
 
 ## Misc
+- What you're reading right now is *rendered* markdown, and I've tried to use a bunch of the basic syntax. 
+If you're reading this from github and want to see the actual markdown text/code for it, click on the "raw" button.
 - `.md` is the usual file extension for markdown, and the one that github will spot and create a "preview" 
 of rendered markdown for you
 - _Call the project `{name}_01_scrap`, where {name} is your last name or pseudo you'll be consistently using._
