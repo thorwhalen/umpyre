@@ -42,5 +42,5 @@ But those I would really like to to focus on here are those that have a particul
 
 ## Python and others
 
-![Python and others](/img/language comparison cartoon 01.png)
+![Python and others](/img/language_comparison_cartoon_01.png)
 
