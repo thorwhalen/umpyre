@@ -36,3 +36,11 @@ But those I would really like to to focus on here are those that have a particul
 - pragmatic AI (the kind that solves the actual problem at hand, no matter what the books say)
 - data science interacting with the rest-of-the-world (where does the data come from, what will your models produce, for whom, and with what face?)
 - fast development (minimizing the boring boilerplate that happens before you get to have fun)
+
+
+# Misc
+
+## Python and others
+
+![Python and others](/img/language comparison cartoon 01.png)
+
