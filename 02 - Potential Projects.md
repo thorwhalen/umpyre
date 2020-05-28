@@ -1,8 +1,8 @@
 
 # py2store
 
-https://github.com/i2mint/py2store
-https://www.youtube.com/watch?v=6lx0A6oVM5E
+- [repository](https://github.com/i2mint/py2store)
+- [video presentation](https://www.youtube.com/watch?v=6lx0A6oVM5E)
 
 ## Build py2store readers/persisters
 
