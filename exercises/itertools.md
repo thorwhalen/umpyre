@@ -23,12 +23,12 @@ from itertools import starmap, product, chain
 # This would be the one liner:
 def kv_fanout(mapping):
     return chain.from_iterable(
-        starmap(lambda k, v: product([k], v), 
+        starmap(lambda k, v: zip(repeat(k), v), 
                 adjacencies.items()))
 
 # But perhaps this would allow one to break it down a bit more
 def fanout_v(k, v):
-    return product([k], v)
+    return zip(repeat(k), v)
 
 def mapkv(kvfunc, mapping):
     return starmap(kvfunc, mapping.items())
@@ -36,3 +36,6 @@ def mapkv(kvfunc, mapping):
 def kv_fanout(mapping):
     return chain.from_iterable(mapkv(fanout_v, adjacencies))
 ```
+
+Note: Whereever we used `zip(repeat(k), v)`, we could have used `product([k], v)`. 
+The former seems to be very slightly faster (with 3.8, on my machine, at least).
