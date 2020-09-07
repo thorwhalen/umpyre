@@ -1,6 +1,6 @@
-Problem: Define types, and use them in type annotations as well as in `isinstance` checks
+# Problem: Define types, and use them in type annotations as well as in `isinstance` checks
 
-Solution: Search for it online (perhaps `typing` or `mypy` have some tricks?), but here are my hacks:
+# Solution: Search for it online (perhaps `typing` or `mypy` have some tricks?), but here are my hacks:
 
 ```python
 from typing import Union, Optional, Callable, Iterable, Awaitable  # etc.
