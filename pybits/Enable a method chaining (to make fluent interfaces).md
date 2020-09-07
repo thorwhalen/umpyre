@@ -1,6 +1,6 @@
-# Problem: Enable a method chaining (to make fluent interfaces)
+## Problem: Enable a method chaining (to make fluent interfaces)
 
-# Solution: Have methods return self
+## Solution: Have methods return self
 
 You do:
 ```python
