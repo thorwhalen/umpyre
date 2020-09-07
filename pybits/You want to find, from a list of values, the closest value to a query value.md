@@ -1,6 +1,6 @@
-# Problem: You want to find, from a list of values, the closest value to a query value
+## Problem: You want to find, from a list of values, the closest value to a query value
 
-# Solution: Use builtin `min` with `key` argument
+## Solution: Use builtin `min` with `key` argument
 ```python
 min(search_this, key=lambda x: abs(x - query))
 ```
