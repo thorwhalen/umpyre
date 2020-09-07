@@ -1,6 +1,6 @@
-*# Problem: Knowing, when iterating over an iterator, if you're at the last element*
+## Problem: Knowing, when iterating over an iterator, if you're at the last element
 
-*# Solution*
+## Solution
 
 ```python
 from typing import Iterable, Any, Tuple
