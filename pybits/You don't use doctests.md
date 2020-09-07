@@ -1,8 +1,8 @@
-*# Problem: You don't use doctests*
-*# Solution: Use doctests*
+## Problem: You don't use doctests
+## Solution: Use doctests
 
-*# Problem: Doctests are fiddly (exceptions, differences in white space, etc.)*
-*# Solution: Read the man page*
+## Problem: Doctests are fiddly (exceptions, differences in white space, etc.)
+## Solution: Read the man page
 Okay, I agree, doctests could be a lot lot easier to use.
 And I don't read man pages much either. But there are solutions to some of the most annoying things.
 Like:
