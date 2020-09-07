@@ -1,6 +1,6 @@
-# Problem: Counting things and operating on counts of things
+## Problem: Counting things and operating on counts of things
 
-# Solution: from collections import Counter
+## Solution: from collections import Counter
 You know it. If you don't: Do. It's simple and so powerful.
 I mention this today because I discovered (or rediscovered) that `Counter`, though it's a dict, has also some extra dunders that just make sense (never noticed, but you don't see dunders when you tab-complete!).
 
