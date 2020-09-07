@@ -1,4 +1,4 @@
-3# Problem: Print lists (or iterables), but don't like how it's rendered, and don't want to type too much to make it so.
+## Problem: Print lists (or iterables), but don't like how it's rendered, and don't want to type too much to make it so.
 
 ## Solution: Know your print function better (and string formatting, which can go a long way)
 
