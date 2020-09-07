@@ -1,4 +1,4 @@
-*# Problem: An object's contents*
+# Problem: An object's contents
 See what attributes one object has, that another doesn't.
 This comes up when you want to see what's particular about an object (that not all objects have, or that a superclass doesn't have).
 
