@@ -1,7 +1,7 @@
-*# Problem: Feel like doing boolean operator acrobatics, to the expense of a novice reader*
+## Problem: Feel like doing boolean operator acrobatics, to the expense of a novice reader
 You like the `x = x or {}` way of expressing the `if not bool(x): x = DFLT_X` but are wondering how you would do it if you needed a more complex condition than `bool` : Like, a way to perform `if not is_so(x): x = make_it_so(x)` logic?
 
-*# Solution*
+## Solution
 `x = (is_so(x) and x) or make_it_so(x)`
 Think about it.
 
