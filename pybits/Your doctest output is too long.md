@@ -1,6 +1,6 @@
-*# Problem: Your doctest output is too long*
+## Problem: Your doctest output is too long
 
-*# Solution: Use directives*
+## Solution: Use directives
 <https://docs.python.org/2/library/doctest.html#directives>
 
 For example
