@@ -4,7 +4,7 @@
 
 ## Problem: Want to time blocks of code, but also print (or log) feedback on entering and/or exiting this block
 
-## Solution: Use a context manager
+## Solution: Use a context manager (like I said)
 
 Here's an example that solves that problem, but you can make it even more light weight if you need,
 Here I give control over what "print" actually means (could mean `logging.log` for example).
