@@ -10,7 +10,7 @@ Like:
 # doctest: +NORMALIZE_WHITESPACE
 ```
 which I mentioned before.
-But also, check out <https://docs.python.org/2.4/lib/doctest-options.html|this> and <https://docs.python.org/3/library/doctest.html|that>.
+But also, check out [this](https://docs.python.org/2.4/lib/doctest-options.html) and [that](https://docs.python.org/3/library/doctest.html).
 
 A useful sample:
 
