@@ -1,6 +1,6 @@
-# Problem: You have a powerful flexible function, but want to offer use-case specific version of it.
+# Problem: You have a powerful flexible function, but want to offer use-case specific versions of it.
 
-This can happen when function has maby many arguments, and you'd like a few use-case specific facades. 
+This can happen when function has many many arguments, and you'd like a few use-case specific facades. 
 It also happens with few, but quite high level interfaces that could use a few specific versions. 
 
 # Solution: Use `functools.partial` and function attributes.
