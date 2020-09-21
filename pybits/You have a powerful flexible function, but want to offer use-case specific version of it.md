@@ -77,3 +77,10 @@ imports_for.third_party = partial(
 )
 imports_for.set.__doc__ = "imported names that are not builtin names (most probably third party packages)"
 ```
+
+# Known limitations
+
+First, if you use decorators, take care to decorate functions "correctly" ([see this article about that](https://hynek.me/articles/decorators/)): Decorators don't automatically copy "everything" over, not even when you use `functools.wraps` out of the box. Namely, they don't copy function attributes (unless you tell your decorator too!
+
+Second, there's limitations of partial itself. But that's just a small limitation; you can easily write your own version of `partial` that does what you want.
+
