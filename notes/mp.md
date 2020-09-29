@@ -124,7 +124,7 @@ https://stackoverflow.com/questions/57083061/python-get-a-list-of-attributes-use
 zope has some stuff for this
 
 
-# MP
+## MP
 
 ## use case: configure wrapper for *instances* of a kvstore
 
@@ -228,4 +228,42 @@ def wrap_kvs(
 class MyStore(Store):
   def _id_of_key(self, k):
     return _id
+```
+
+
+# 2019-09-25
+
+# Session notes
+
+Projects:
+
+* https://github.com/i2mint/py2store (https://pybay.com/speaker/thor-whalen/)
+* https://github.com/thorwhalen/py2api
+* https://github.com/thorwhalen/py2dash
+
+## Issues / subjects
+
+* Sense of a feature not fitting with the architecture
+* Pythonic API design?
+
+## links
+
+### Tools
+
+* https://pre-commit.com/
+
+  Example: https://github.com/psf/black/blob/master/.pre-commit-config.yaml
+
+* black: https://github.com/psf/black
+* flake8: http://flake8.pycqa.org/en/latest/
+
+* example project using the above: https://github.com/mjpieters/collegial
+
+
+
+## Thor's scrap
+
+```python
+  def __contains__(self, k) -> bool:
+      return self.store.__contains__(self._id_of_key(k))
 ```
