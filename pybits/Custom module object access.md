@@ -2,7 +2,7 @@
 Customize a module's object access (for example to raise deprecation warnings).
 
 # Solution
-Simply define a `__getattr__(name: str): -> Any` function and it will take over the `module.name` or `from module import name` , and define a `__dir()__: -> List` function and it will override the normal `dir(module)` call.
+Simply define a `__getattr__(name: str): -> Any` function and it will take over the `module.name` or `from module import name` , and define a `__dir__(): -> List` function and it will override the normal `dir(module)` call.
 
 This is <https://www.python.org/dev/peps/pep-0562/>
 
