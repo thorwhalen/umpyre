@@ -2,6 +2,24 @@
 
 
 
+# 2020-10-06
+
+- Using `__init__.py` in a package.
+  - Short mention of dev needs vs. API user needs
+  - `__init__.py` is always loaded when traversing a package
+  - `def __getattr__(name): ...` (and `def __dir__(): ...`) in a module,
+    https://docs.python.org/3/reference/datamodel.html#customizing-module-attribute-access
+
+- annotations on new extensions
+  - Zope Component Architecture: https://zopecomponent.readthedocs.io/en/latest/narr.html
+  - Type hinting
+    - https://instagram-engineering.com/let-your-code-type-hint-itself-introducing-open-source-monkeytype-a855c7284881
+  
+
+
+
+
+
 # 2020-09-29
 
 - areas for questions
