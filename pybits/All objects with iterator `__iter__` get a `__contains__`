@@ -1,0 +1,31 @@
+
+Look ma, no `collections.abc`, and yet...
+
+```python
+class A:
+    def __iter__(self):
+        yield from [1,2,3,4]
+        
+a = A()
+assert (2 in a) == True
+assert (5 in a) == False
+```
+
+```python
+class A:
+    def __iter__(self):
+        return [1,2,3,4]
+        
+a = A()
+2 in a  # you get error: TypeError: argument of type 'A' is not iterable
+```
+
+
+```python
+list(a)  # you get error: TypeError: iter() returned non-iterator of type 'list'
+```
+
+Two main observations here:
+- The class gets a __contains__ automagically (it’s what allows the 2 in a to happen).
+- ... but only if the __iter__ is an iterator (being iterable is not enough)
+
