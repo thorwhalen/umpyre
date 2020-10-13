@@ -1,4 +1,17 @@
 
+# 2020-10-13
+
+- `__future__`?
+- resources with code: https://importlib-resources.readthedocs.io/en/latest/ is the backport for a new feature in Python 3.9:
+   https://docs.python.org/3/library/importlib.html#module-importlib.resources
+
+
+## Thor's Notes
+
+https://stackoverflow.com/questions/64015729/python-when-you-don-t-want-to-require-a-third-party
+
+package_resources
+
 
 
 
