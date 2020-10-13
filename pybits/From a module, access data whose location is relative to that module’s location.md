@@ -4,6 +4,10 @@
 
 (importlib_resources)[https://importlib-resources.readthedocs.io/] is in standard lib.
 
+Note that (importlib_resources)[https://importlib-resources.readthedocs.io/]
+is a backport for a new feature in Python 3.9: 
+[importlib.resources](https://docs.python.org/3/library/importlib.html#module-importlib.resources)
+   
 See example [here](https://importlib-resources.readthedocs.io/en/latest/using.html#example).
 
 I used to (this will end today!) do it this way:
