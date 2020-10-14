@@ -1,4 +1,9 @@
-# Problem
+# Problem: Where do I put user app data
+
+You know the deal. You're writing some program, and you need to persist some stuff. 
+You probably put it somewhere in the home folder...
+
+But guess what? There's a standard. And yes, it's in the home folder, but where?
 
 # Solution
 
