@@ -48,3 +48,28 @@ try:
 except ImportError:
     from importlib_resources import files  # pip install importlib_resources
 ```
+
+
+## Example usage
+
+You can put this in a `__init__.py` module (warning -- it won't work in any modules, just "package" ones (that is, named `__init__.py`. 
+
+From this, you get a function that will give you a `PosixPath` to give you access to files relative to the location of that `__init__.py`. 
+
+```python
+import sys
+
+try:
+    from importlib.resources import files  # ... and any other things you want to get
+except ImportError:
+    from importlib_resources import files  # pip install importlib_resources
+
+module_path = files(sys.modules[__name__])
+ppath = module_path.joinpath
+
+## explanation:
+# current_module = sys.modules[__name__]
+# module_path = files(current_module)
+
+```
+
