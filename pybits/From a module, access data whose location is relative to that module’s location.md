@@ -30,8 +30,21 @@ eml = resource_bytes('email.tests.data', 'message.eml').decode('utf-8')
 
 But now there’s better AND faster:
 
-```
+```python
 from importlib_resources import files
 # Reads contents with UTF-8 encoding and returns str.
 eml = files('email.tests.data').joinpath('message.eml').read_text()
+```
+
+## Future proof it
+
+If you're in 3.9, just use builtin `importlib.resource` instead.
+
+If you're in versions lower than 3.9, but want to future proof it to use the builtin when available, 
+you can do something like this:
+```python
+try:
+    from importlib.resources import files  # ... and any other things you want to get
+except ImportError:
+    from importlib_resources import files  # pip install importlib_resources
 ```
