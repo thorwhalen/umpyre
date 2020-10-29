@@ -1,4 +1,56 @@
 
+# 2020-10-29
+
+## Single dispatch
+
+Instead of
+
+```python
+def function(foo, ...):
+    if isinstance(foo, Type1):
+        return handle_type1(...)
+    elif isinstance(foo, Type2):
+        return handle_type2(...)
+   ...
+```
+
+use `functools.singledispatch()`:
+
+```python
+from functools import singledispatch
+
+@singledispatch
+def function(foo, ...):
+    # general case, not a specific type
+
+@function.register
+def _type1_handler(foo: Type1, ...):
+    ...
+
+@function.register
+def _type2_handler(foo: Type2, ...):
+    ...
+```
+
+See https://docs.python.org/3/library/functools.html#functools.singledispatch
+
+## on Duck typing and testing vs exceptions.
+
+* Python Forgiveness vs. Permission and Duck Typing
+  https://softwareengineering.stackexchange.com/a/175663/55400
+
+## Python 3.10 pattern matching
+
+* https://www.python.org/dev/peps/pep-0634/
+* https://www.python.org/dev/peps/pep-0635/
+* https://www.python.org/dev/peps/pep-0636/
+
+## Documentation consistency
+
+* Sphinx substitutions: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#substitutions
+
+
+
 # 2020-10-13
 
 - `__future__`?
