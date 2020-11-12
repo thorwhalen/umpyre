@@ -1,4 +1,25 @@
 
+# 2020-11-12
+
+## Links
+
+* https://github.com/palantir/python-language-server
+* https://github.com/davidhalter/jedi
+* https://docs.python.org/3/reference/datamodel.html#customizing-instance-and-subclass-checks
+
+https://github.com/boisgera/pandoc
+https://github.com/bebraw/pypandoc
+
+
+## Review
+
+https://github.com/i2mint/i2/blob/master/i2/io_trans.py
+--> look at singledispatch for type-based routing
+--> mapping proxy type (in types module)
+
+`types.MappingProxyType`
+
+
 # 2020-10-29
 
 ## Single dispatch
