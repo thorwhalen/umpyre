@@ -3,15 +3,18 @@
 
 ## Links
 
-### Parsing docs:
+### Parsing python
 * https://github.com/palantir/python-language-server
 * https://github.com/davidhalter/jedi
+
+### Parsing docs:
+* https://github.com/boisgera/pandoc
+* https://github.com/bebraw/pypandoc
 
 ### controlling isinstance(obj, type) (without subclassing type)
 * https://docs.python.org/3/reference/datamodel.html#customizing-instance-and-subclass-checks
 
-https://github.com/boisgera/pandoc
-https://github.com/bebraw/pypandoc
+
 
 
 ## Review
