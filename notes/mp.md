@@ -14,10 +14,9 @@ https://github.com/bebraw/pypandoc
 ## Review
 
 https://github.com/i2mint/i2/blob/master/i2/io_trans.py
---> look at singledispatch for type-based routing
---> mapping proxy type (in types module)
 
-`types.MappingProxyType`
+- look at singledispatch for type-based routing
+- mapping proxy type (in types module): `types.MappingProxyType`
 
 
 # 2020-10-29
