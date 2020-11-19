@@ -59,7 +59,8 @@ Questions?
 
 ## Thor's notes
 
-Difference between `o.__class__` and `type(o)`
+Q: Difference between `o.__class__` and `type(o)`
+A: type is the API -- more "purist" to use that.
 
 ```python
   try:
