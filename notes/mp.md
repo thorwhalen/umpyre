@@ -1,4 +1,74 @@
 
+
+# 2020-11-19
+
+Questions?
+
+* `__subclasscheck__` and `__instancecheck__` are methods on the **meta class**, not on the class itself.
+* `isinstance(a, B)` and `issubclass(A, B)` ask `type(B)` to verify for a virtual instance or subclass check.
+
+## Links
+
+* Special method lookup rules: https://docs.python.org/3/reference/datamodel.html#special-method-lookup
+  * `repr(instance)` vs `repr(type(instance))`. Where will you find the `__repr__` method?
+  * standard rule: if the instance has the attribute, _use that directly_, don't go to the class.
+  * doesn't work for `__repr__`, because `Class.__repr__(self)` should only work for instances.
+  * Special methods, instead of `instance.__special__()`, always `type(instance).__special__(instance)`
+  * Normal rule: if `instance.foo` doesn't exist, look for `type(instance).foo`, then perhaps bind that with `__get__(instance)`.
+
+* `dict.__missing__`, if defined on subclass: https://github.com/python/cpython/blob/87c87b5bd6f6a5924b485398f353308410f9d8c1/Objects/dictobject.c#L2147-L2161
+
+```c
+        if (!PyDict_CheckExact(mp)) {
+            /* Look up __missing__ method if we're a subclass. */
+            PyObject *missing, *res;
+            _Py_IDENTIFIER(__missing__);
+            missing = _PyObject_LookupSpecial((PyObject *)mp, &PyId___missing__);
+            if (missing != NULL) {
+                res = PyObject_CallOneArg(missing, key);
+                Py_DECREF(missing);
+                return res;
+            }
+            else if (PyErr_Occurred())
+                return NULL;
+        }
+        _PyErr_SetKeyError(key);
+        return NULL;
+```
+
+* Chained exceptions, `raise KeyError(k)` **in the context of `except ...:` handler** will attach the old exception
+   as `NewException().__context__`, the _implicit context_ of the exception. 
+
+  ```python
+  try:
+    try:
+      42/0
+    except:
+      raise KeyError("You dummy")
+  except Exception as e:
+    print(e.__context__)  # prints `ZeroDivisioError`.
+  ```
+
+* Explicit chaining: `raise Exception from other_exception`. That's explicitly connecting the two,
+  then `NewException().__cause__` is set.
+
+* Covered in https://docs.python.org/3/library/exceptions.html
+
+* https://stackoverflow.com/questions/24752395/python-raise-from-usage
+
+
+## Thor's notes
+
+Difference between `o.__class__` and `type(o)`
+
+```python
+  try:
+    0/0
+  except Exception as e:
+    e.__context__
+```
+
+
 # 2020-11-12
 
 ## Links
