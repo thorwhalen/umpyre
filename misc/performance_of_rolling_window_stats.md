@@ -8,8 +8,12 @@ We'll look at two possibilities here:
 
 
 Obviously, the first `Specialized` solution is bound to be more efficient (for large enough window size at least). 
+I mean, it's basically 2 sums versus an unbounded number of sums (proportional to window size).
+
 But the second "General" one has huge advantages that are not to be ignored. 
 The main one being that it is, well, general. 
+But it's also simpler. 
+And if you have to reuse the pattern you'll notice all those architectural goodies such as separation of concerns, open-closed principle, DRY, etc.
 
 Indeed, you'll need a different `Specialized` logic every time you want a different kind of statistic. 
 For means, it's what we said, but for variance you'll need to accumulate both the sum and the sum of the squares of the values. If you're wondering how that last one works, then I've made my point. 
