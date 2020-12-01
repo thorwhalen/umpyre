@@ -94,3 +94,6 @@ df.plot(style='-o', figsize=(16, 5), grid=True);
 ```
 
 
+![image](https://user-images.githubusercontent.com/1906276/100796093-fddaf280-33d4-11eb-842b-d50403146a43.png)
+
+
