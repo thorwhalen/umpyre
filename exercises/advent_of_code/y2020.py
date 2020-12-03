@@ -1,6 +1,6 @@
 
-
-# https://adventofcode.com/2020/day/1
+######################################################################################################
+# https://adventofcode.com/2020/day/1 ################################################################
 
 from math import prod
 from itertools import combinations
@@ -26,7 +26,8 @@ report_numbers = map(float,
 assert report_repair(report_numbers) == 514579
 
 
-# https://adventofcode.com/2020/day/3
+######################################################################################################
+# https://adventofcode.com/2020/day/3 ################################################################
 
 example_pattern = """..##.......
 #...#...#..
