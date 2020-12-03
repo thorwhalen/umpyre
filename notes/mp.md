@@ -1,4 +1,32 @@
+# 2020-12-03
 
+https://github.com/thorwhalen/umpyre/issues/8
+settings/store-and-retrieve-app-data
+
+* AoC: https://github.com/mjpieters/adventofcode
+
+Configuration projects:
+
+* https://pypi.org/project/dynaconf/
+* https://pypi.org/project/python-decouple/
+
+Formats:
+
+* https://en.wikipedia.org/wiki/TOML -- has a nice comparison table with other Formats
+
+Places to put configuration managed by  tool:
+
+* `~/.config`: -- XDG freedesktop userdata standard
+  * https://stackoverflow.com/questions/1024114/location-of-ini-config-files-in-linux-unix
+  * https://unix.stackexchange.com/questions/33943/what-config-refers-to-and-how-to-put-files-there
+  * https://www.freedesktop.org/wiki/Software/xdg-user-dirs/
+
+
+
+see what pipx does for windows
+
+* Windows env vars: https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables
+* MS's own standards on this: https://docs.microsoft.com/en-us/windows/uwp/design/app-s
 
 # 2020-11-19
 
