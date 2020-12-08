@@ -2,6 +2,30 @@
 
 # Solution: A context manager
 
+Note (after the fact): In fact there's a much simpler way for the simple base (but common) case: https://docs.python.org/3.5/library/contextlib.html#contextlib.suppress
+
+Example:
+```python
+
+with suppress(ZeroDivisionError, TypeError):  # enter number of comma separated error classes you want to ignore
+    print('about to divide by zero...')
+    0/0
+    print('this line will not be executed')
+# Will print "about to divide by zero...", but no error is raised.
+```
+
+So the ModuleNotFoundIgnore I wrote all over code since this summer can be replaced by:
+
+```python
+from functools import partial
+from contextlib import suppress
+
+ModuleNotFoundIgnore = partial(suppress, ModuleNotFoundError) 
+```
+
+Older:
+A spelled out version of a context manager that ignores `ModuleNotFoundError` (only), but will also print a message...
+
 ```python
 class ModuleNotFoundManager:
     """(Context) managing ModuleNotFoundErrors (ignore, log, or other creative uses...)
