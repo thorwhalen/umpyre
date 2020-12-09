@@ -19,7 +19,7 @@ def nth(iterable, n, default=None):
 See the answer in [itertools recipes](https://docs.python.org/3/library/itertools.html#itertools-recipes).
 The latter contains many more oportunities for such exercises. 
 
-But it would be nice to be able to extract these automatically from code. So here's my little version of that:
+But it would be nice to be able to extract these automatically from code. So here's my little version of that.
 
 ```python
 from inspect import getsourcelines, getdoc, ismodule, signature
@@ -42,12 +42,15 @@ def snippets_of_funcs(funcs, max_code_lines=12, max_doc_lines=15):
             if (n_doc_lines <= max_doc_lines 
                 and (len(source_lines) - n_doc_lines) <= max_code_lines):
                 yield f"{func.__name__}{signature(func)}\n\'\'\'{doc}\'\'\'"
+                
+                
 ```
-   
+
 I applied this to a module I have where I put the said itertools recipes (and more):
 
 ```python
-import ut.util.uiter as m
+from skill import snippets_of_funcs
+import ut.util.uiter as m  # find here: https://github.com/thorwhalen/ut/blob/master/util/uiter.py
 
 for snippet in snippets_of_funcs(m, max_code_lines=4, max_doc_lines=30):
     if not snippet.startswith('_'):
