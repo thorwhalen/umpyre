@@ -14,7 +14,7 @@ It's separation of concerns saves us here. We separated chunking and flattening 
 If you didn't do that, this could lead you to something like the 180 lines that someone wrote when they were still a junior programmer. 
 Great complex code that needs to manage the possible misalignments of chunk sizes, etc.
 See that scary list_chunker (now replaced with the itertools.chain trick) 
-[here](http://git.otosense.ai/thor/span/-/blob/9444b020d4b049b3fa95dec3254501fe05f6c2fa/chunking/utils/simplified_list_iterator_chunker.py).
+[here](https://github.com/thorwhalen/umpyre/blob/master/pybits/data/long_and_hard_way_of_doing_rechunking.py).
 
 Here's some complete code that implements a chunker and rechunker. 
 Understanding how it works will increase your python, no doubt:
