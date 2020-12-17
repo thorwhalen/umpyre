@@ -1,3 +1,18 @@
+# 2020-12-17
+
+## Timeout on code execution:
+
+* https://stackoverflow.com/questions/492519/timeout-on-a-function-call
+  (https://pypi.org/project/func-timeout/, untried)
+
+## Python and functional programming
+
+The advice from the core team on how to do functional programming in Python:
+
+* https://docs.python.org/3/howto/functional.html
+
+
+
 # 2020-12-03
 
 https://github.com/thorwhalen/umpyre/issues/8
