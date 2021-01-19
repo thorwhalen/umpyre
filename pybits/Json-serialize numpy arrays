@@ -1,0 +1,39 @@
+# Problem: Your object doesn't json-serialize because of numpy
+
+Errors like:
+
+```
+TypeError: Object of type int32 is not JSON serializable
+```
+
+
+# Solution: Use a custom encoder class
+
+We knew that already, and we've seen some ugly such stuff in jdicts all over the place.
+I think I found a more graceful one (essentially, handling numpy types in bulk so you don't have to list them all one by one (thus the ugliness)).
+
+```python
+import json
+import numpy as np
+
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return super(NpEncoder, self).default(obj)
+```
+
+Use examples:
+
+```
+json_str = json.dumps(obj, cls=NpEncoder)
+```
+
+```
+jdict = json.loads(NpEncoder().encode(obj))  # if you just want a dict (that is json-izable)
+```
