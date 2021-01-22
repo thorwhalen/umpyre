@@ -128,3 +128,8 @@ def enforce_strict_types(callable):
 
     return decorate(callable)
 ```
+
+# Possible extensions
+
+- SOC: Separate the var type specification concern so that the validation logic can be applied to a wider range of situations (e.g. getting type information from annotations, or from a glossary ledger of variable information, etc.)
+- Be able to turn validation off for some fields
