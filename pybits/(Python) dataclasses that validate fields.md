@@ -49,7 +49,7 @@ But this doesn't even work where it "should" (I get an `AttributeError: x`), and
 Found answer here [https://stackoverflow.com/a/50622643/5758423].
 
 ```python
-mport inspect
+import inspect
 import typing
 from functools import wraps
 
