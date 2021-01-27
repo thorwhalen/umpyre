@@ -9,9 +9,8 @@ You know you it's better to avoid writing debug prints in the code.
 ```python
 from functools import wraps
 
-
 def args_kwargs_sequence(args, kwargs):
-    return f"{', '.join(map(str, a))}, {', '.join(f'{k}={v}' for k, v in k.items())}"
+    return f"{', '.join(map(str, args))}, {', '.join(f'{k}={v}' for k, v in kwargs.items())}"
 
 
 def io_logger(func):
