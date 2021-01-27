@@ -1,4 +1,5 @@
-# Problem: 
+# Problem: Simple input-output Logging without changing inner code of function
+
 You're debugging some code and want calls to specific functions to be printed (input and output).
 
 You know you it's better to avoid writing debug prints in the code. 
@@ -46,3 +47,5 @@ foo(1, 2, asd=3, df=df)
 bar(1, 2, asd=3, df=df)
 	-> 0
 ```
+
+Many extensions possible: Adding function call (count/index) tracking, tabulation with inner calls, etc.
