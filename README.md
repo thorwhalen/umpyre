@@ -1,6 +1,8 @@
 # umpyre
 Resources for doing data science in python. 
 
+**You might be looking for the umpyre package? The pip installable one? If so, [find it here](https://github.com/i2mint/umpyre/).**
+
 ## Python is popular
 Resources for doing data science in python. 
 
