@@ -1,3 +1,23 @@
+# 2020-02-04
+
+Sentinels: Use object() instead of None. Use `typing.cast` if you need to pretend it's a specific type.
+
+- Pickling uses multiple hooks, deque defines [`__reduce__()`](https://docs.python.org/3/library/pickle.html#object.__reduce__).
+
+  Specifically, deques make use of the optional 4th return value, *Optionally, an iterator
+  (and not a sequence) yielding successive items.*
+
+- Low-level pickle understanding: [`pickletools`](https://docs.python.org/3/library/pickletools.html)
+- Other low-level mechanisms involved: the [`copyreg` module](https://docs.python.org/3/library/copyreg.html)
+- Enforcing type hints at runtime: Recommendations by [Real Python](https://realpython.com/python-type-checking/#using-types-at-runtime)
+
+Inspecting a pickle dump for dependencies:
+https://stackoverflow.com/questions/64850179/inspecting-a-pickle-dump-for-dependencies/64850705#64850705
+
+Compare buffer stats and accumulate: https://docs.python.org/3/library/itertools.html#itertools.accumulate
+
+
+
 # 2020-12-17
 
 ## Timeout on code execution:
