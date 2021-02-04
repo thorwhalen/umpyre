@@ -1,7 +1,7 @@
 
 # Mine
 
-Make dangerous difficult.
+Make dangerous difficult. (In Latin: _Ut facile periculi._)
 
 If combination is easy, separation of concerns will be incentivized. 
 
