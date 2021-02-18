@@ -1,3 +1,67 @@
+# 2020-02-18
+
+## Parametric attribute generating in a class
+
+```python
+# preexisting:
+# decorator() (a decorator)
+# attributes (a sequence of existing attributes of Bar)
+# Bar, a base class.
+
+class Foo(Bar):
+    for _name in attributes:
+        locals()[name] = decorator(getattr(Bar, name))
+
+    del _name
+```
+
+What happens? Everything under `class [name](...):` is *executable code*.
+
+Take a class statement:
+
+```python
+class Foo:
+    bar = "baz"
+```
+
+Python does this:
+
+```python
+def class_body():
+    bar = "baz"
+    return locals()
+
+Foo = type("Foo", (object,), class_body())
+```
+
+## Counting an iterator as something else exhausts it
+
+```python
+from itertools import count
+from operator import itemgetter
+
+c = count()
+countingiter = map(itemgetter(0), zip(origiter, c))
+
+# use countingiter
+# ask c for its next number
+length = next(c)
+```
+
+## Threading primitives
+
+Locks: https://docs.python.org/3/library/threading.html#lock-objects. Can be used as context managers.
+
+```python
+class Foo:
+  def __init__(self):
+    self._lock = Lock()
+
+  def bar(self):
+    with self._lock:
+      # guarded section, only one thread at a time.
+```
+
 # 2020-02-04
 
 Sentinels: Use object() instead of None. Use `typing.cast` if you need to pretend it's a specific type.
