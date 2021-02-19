@@ -25,4 +25,7 @@ assert not isinstance(gen, Generator)
 assert isinstance(gen(), Generator)
 assert isinstance(gen(), Iterator)
 assert isinstance(gen(), Iterable)
+
+assert issubclass(Generator, Iterator)
+assert issubclass(Iterator, Iterable)
 ```
