@@ -1,3 +1,48 @@
+# 2020-03-04
+
+```python
+class Number:
+    ...
+
+Number.foo = ...(Number)
+```
+
+* `property` answer: https://stackoverflow.com/questions/17330160/how-does-the-property-decorator-work-in-python/17330273#17330273
+  Shows that `__get__` differentiates between access on the class and on an instance.
+
+
+```python
+from functools import partial
+import functools
+
+wraps = partial(functools.wraps, assigned=...., updated=...)
+
+## Naming generated classes
+
+* takes module and qualname arguments (first argument is class name) https://docs.python.org/3/library/enum.html#functional-api
+* counter example: https://docs.python.org/3/library/dataclasses.html#dataclasses.make_dataclass
+* counter counter example: https://docs.python.org/3/library/collections.html#collections.namedtuple takes module!
+
+Proposed alternative syntax without decorator:
+
+```python
+class MyGraze(SourcedStore, store=LocalGrazed, source=Internet(), return_data_source=True):
+    # perhaps
+    # return_data_source = True
+    # ...
+    pass
+
+
+# if you can reference keyword arguments on the generated class, use attributes 
+# instead of keyword arguments.
+print(MyGraze.return_data_source)  # True or AttributeError?
+```
+
+## My Notes
+
+Look into separating __name__ etc. assignment in separate decorator
+
+
 # 2020-02-25
 
 - [Mapping views][1], quite simple collection objects that are live views.
