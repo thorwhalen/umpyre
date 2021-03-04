@@ -1,6 +1,12 @@
 # 2020-02-25
 
+- [Mapping views][1], quite simple collection objects that are live views.
+- `__length_hint__` is never called if `__len__` is available. It is there purely for *unsized* objects,
+  so `list()` and other such methods can pre-allocate memory (and so perform better).
 
+- Attribute delegation on classes? -> MetaClass with `__getattr__`.
+
+[1]: https://github.com/python/cpython/blob/f82578ace103ec977cec3424b20e0b5f19cf720e/Lib/_collections_abc.py#L797-L872
 
 # 2020-02-18
 
