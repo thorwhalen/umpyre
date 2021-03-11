@@ -1,3 +1,76 @@
+# 2020-03-11
+
+Problem: https://github.com/thorwhalen/umpyre/issues/35
+
+* AST example: https://stackoverflow.com/a/66582895/100297
+
+   Core: `ast.get_source_segment(source, node)`
+   https://docs.python.org/3/library/ast.html#ast.AST.lineno
+   https://docs.python.org/3/library/ast.html#ast.get_source_segment
+
+
+Problem: https://github.com/thorwhalen/umpyre/issues/31
+
+* call a method on an arbitrary object with given arguments. "Call .method(arg1, arg2, kw=kwargval)"
+  https://docs.python.org/3/library/operator.html#operator.methodcaller
+  `methodcaller("startswith", "__")("__foo") =-> True`
+
+
+## My Notes
+
+Problem: https://github.com/thorwhalen/umpyre/issues/32
+
+Try different solutions for the following (Inject the methods inside the class itself?)
+
+- metaclasses
+- decorator
+- using locals()
+
+https://github.com/otosense/linkup/blob/master/linkup/base.py
+
+```python
+
+# TODO: Inject the methods inside the class itself?
+class OperableMappingNoDflts(dict):
+    """OperableMapping with ALL operators of operator module (but without defaults)
+    >>> from linkup.base import *
+    >>> d = OperableMappingNoDflts({'a': 8, 'b': 4, 'c': 3})
+    >>> dd = OperableMappingNoDflts(b=2, c=1, d=0)  # you can make one this way too
+    >>>
+    >>> d + 1
+    {'a': 9, 'b': 5, 'c': 4}
+    >>> d / dd
+    {'b': 2.0, 'c': 3.0}
+    >>> (d + 1) / dd
+    {'b': 2.5, 'c': 4.0}
+    """
+
+
+def _binary_operator_method_template(self, y, op, factory):
+    """"""
+    if isinstance(y, Mapping):
+        return key_aligned_val_op(self, y, op, empty_mapping_factory=factory)
+    else:
+        return map_op_val(self, y, op, factory)
+
+
+# TODO: Make unary tools and inject to OperableMappingNoDflts
+# for name, func in operator_name_funcs_1:
+#     setattr(OperableMappingNoDflts, name, partialmethod(_binary_operator_method_template,
+#                                                         op=func, factory=OperableMappingNoDflts))
+
+for name, func in operator_name_funcs_2:
+    setattr(
+        OperableMappingNoDflts,
+        name,
+        partialmethod(
+            _binary_operator_method_template,
+            op=func,
+            factory=OperableMappingNoDflts,
+        ),
+    )
+```
+
 # 2020-03-04
 
 ```python
