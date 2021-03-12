@@ -31,3 +31,25 @@ Can import from constants and utils but no other modules.
 
 And then there's the rest... tests/ folder for tests, tools.py module that contain util functions that USE (not "ARE USED") the projects objects, etc.
 ```
+
+
+# Appendix
+
+Diagram created by doing this:
+
+```python
+from ut import dgdisp
+
+dgdisp("""
+constants -> util
+constants, util -> base
+[constants], [util], [base] -> [other_modules]
+constants [label="constants.py"]
+util [label="util.py"]
+base [label="base.py"]
+other_modules [label="other_modules..."]
+
+utils [label="utils/" shape="folder"]
+tests [label="tests/" shape="folder"]
+""")
+```
