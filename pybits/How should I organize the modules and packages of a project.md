@@ -30,7 +30,6 @@ Can import from constants and utils but no other modules.
 ## etc.
 
 And then there's the rest... tests/ folder for tests, tools.py module that contain util functions that USE (not "ARE USED") the projects objects, etc.
-```
 
 
 # Appendix
