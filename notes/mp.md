@@ -1,3 +1,98 @@
+# 2021-03-18
+
+* Python steering council: https://github.com/python/steering-council
+
+## Context managers
+
+The `with` context manager can deal with up to 3 components:
+
+1. The expression after `with` but before `as ...:` or `:`
+2. The context manager, an object with `__enter__` and `__exit__` methods.
+3. The return value from `__enter__`.
+
+1 and 2 are _usualy the same object_, the original object can be used as a 
+context manager. 3. is often the same as 2, when `__enter__` returns `self`. 
+E.g. file objects do this.
+
+```python
+with open(...) as f:
+    # (1) `open()` is not a context manager, the return value is, which is a file object, which is (2)
+    # `f` is (3), but is also the same object as (2)
+```
+
+can be rewritten as
+
+```python
+f = open(...)
+with f:
+   # ... this is the same because `f.__enter__()` has returned `f`.
+```
+or
+
+```python
+f = open(...)
+with f as f1:
+   assert f is f1
+   # ... this is the same because `f.__enter__()` has returned `f`.
+```
+
+
+## Further notes
+
+For context managers, think of iterable vs iterator. 
+- Iterator has a state: If we both have the same iterator, we share that state (the cursor).
+- If instead I give you an iterable, you can make your own iterator with independent state
+
+
+### Choices for behavior of bulk writes and context managers
+
+- Passing on s has effect of independent s 
+- Passing on s has effect of being same s (operations accumulate from different sources)
+
+## Mapping View wrapping
+
+Use factory methods to create the view classes instead (Gang of Four design patterns, not
+suprisingly, calls this the : *Factory method pattern*):
+
+```python
+class BaseMapping:
+    # factories for mapping view objects
+    # that subclasses can replace
+    KeysView = BaseKeysView
+    ValuesView = BaseValuesView
+    ItemsView = BaseItemsView
+
+    def keys(self):
+        # each of these methods use the factory method on self,
+        # here that's self.KeysView(), and expect it to take specific arguments.
+        return self.KeysView(self)
+
+    def values(self):
+        return self.ValuesView(self)
+
+    def items(self):
+        return self.ItemsView(self)
+
+
+class SpecialKeysView(BaseMapping.KeysView):   # or SpecialKeysView(BaseKeysView)
+    def extra_method(self):
+        # ...
+
+
+class SpecialMapping:
+    KeysView = SpecialKeysView
+    # ...
+
+
+sm = SpecialMapping()
+type(sm.keys())  # will be SpecialKeysView
+```
+
+If your subclassed factories need to accept extra arguments, you could use a `partial()`, or have the `__init__` method pull
+in more information from the standard context that is passed in (in the above examples, `BaseMapping.keys()` passes in the
+mapping object, `self`, to each factory call).
+
+
 # 2020-03-11
 
 Problem: https://github.com/thorwhalen/umpyre/issues/35
@@ -71,7 +166,7 @@ for name, func in operator_name_funcs_2:
     )
 ```
 
-# 2020-03-04
+# 2021-03-04
 
 ```python
 class Number:
@@ -116,7 +211,7 @@ print(MyGraze.return_data_source)  # True or AttributeError?
 Look into separating __name__ etc. assignment in separate decorator
 
 
-# 2020-02-25
+# 2021-02-25
 
 - [Mapping views][1], quite simple collection objects that are live views.
 - `__length_hint__` is never called if `__len__` is available. It is there purely for *unsized* objects,
@@ -190,7 +285,7 @@ class Foo:
       # guarded section, only one thread at a time.
 ```
 
-# 2020-02-04
+# 2021-02-04
 
 Sentinels: Use object() instead of None. Use `typing.cast` if you need to pretend it's a specific type.
 
