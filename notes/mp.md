@@ -93,7 +93,7 @@ in more information from the standard context that is passed in (in the above ex
 mapping object, `self`, to each factory call).
 
 
-# 2020-03-11
+# 2021-03-11
 
 Problem: https://github.com/thorwhalen/umpyre/issues/35
 
@@ -221,7 +221,7 @@ Look into separating __name__ etc. assignment in separate decorator
 
 [1]: https://github.com/python/cpython/blob/f82578ace103ec977cec3424b20e0b5f19cf720e/Lib/_collections_abc.py#L797-L872
 
-# 2020-02-18
+# 2021-02-18
 
 ## Parametric attribute generating in a class
 
