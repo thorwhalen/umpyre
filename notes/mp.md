@@ -1,3 +1,82 @@
+## 2021-03-25
+
+* Clearing methods, variants
+
+  Base classes, mixins:
+
+  ```python
+  class DisabledClear:
+      def clear(self):
+          raise NotImplementedError(...)
+  ```
+
+  and then LBYL (Look Before You Leap):
+
+  ```python
+  # (not) isinstance(..., DisabledClear)
+  ```
+  
+  
+  or just not use `ininstance()` or the above mixin, just:
+
+  ```python
+  try:
+      object.clear()
+  except (AttributeError, NotImplementedError):
+      pass
+  ```
+
+* Another option: descriptor that raises `AttributeError`:
+
+  ```python
+  class AttributeErrorAttribute:
+      _name = "unnamed"
+      def __set_name__(self, owner, name):
+          self._name = name
+      def __get__(self, *args):
+          raise AttributeError(self._name)
+  ```
+
+  ```python
+  try:
+      object.clear
+  except AttributeError:
+      pass
+  ```
+
+* Cachetools feature request: https://github.com/tkem/cachetools/issues/176
+
+* Avoiding sharing a cache between instances of a generated class, want to use a decorator
+
+  Sol: have the decorator accept a *callback*, which creates the cache on first use.
+
+  ```python
+  def decorator_factory(cache_factory):   # callback == factory for the cache
+      def decorator(f):
+          @wraps(f)
+          def wrapper_method(self, *args, **kwargs):
+              try:
+                  cache = self._memioze__cache
+              except AttributeError:
+                  cache = self._memioze__cache = cache_factory()
+
+              if k not in cache:
+                  val = method(self, k)
+                  cache[k] = val  # cache it
+                  return val
+              else:
+                  return cache[k]
+
+          return wrapper
+      return decorator
+
+  class FooBar:
+      @decorator_factory(dict)
+      def decorated_function(self, foo, bar):
+          # ...
+  ```
+
+
 # 2021-03-18
 
 * Python steering council: https://github.com/python/steering-council
