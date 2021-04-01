@@ -1,4 +1,18 @@
-## 2021-03-25
+# 2021-04-01
+
+https://github.com/i2mint/mongodol/blob/d4e65280c660e1f40dae2933cfdfadcb3c91ec3e/mongodol/tracking_methods.py
+
+
+## Proxying with special methods
+
+Werkzeug had to solve this too:
+
+https://github.com/pallets/werkzeug/blob/c4d85cb9e0e78c2d5786baad649100d42526c399/src/werkzeug/local.py#L467-L656
+
+Part of https://werkzeug.palletsprojects.com/en/1.0.x/local/
+
+
+# 2021-03-25
 
 * Clearing methods, variants
 
