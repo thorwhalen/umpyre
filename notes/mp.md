@@ -1,15 +1,65 @@
-# 2021-05-06
+# Upcoming
 
-## Topics
+Littles:
+- [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
+- [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
+
+
+# 2021-05-06
 
 https://github.com/search?l=&o=desc&q=user%3Athorwhalen+user%3Ai2mint+user%3Aotosense&s=updated&type=Issues
 
-Main: Fluid interface for py2store wrappers.
+## WriteBackChainMap
 
-Littles:
-- [Populate based on folder templates](https://github.com/i2mint/wads/issues/3)
-- [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
-- [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
+* ChainMap `__getitem__` implementation: https://github.com/python/cpython/blob/611aa39142f156508945ac312724474c493a6691/Lib/collections/__init__.py#L935-L941
+
+```python
+from collections import ChainMap, deque
+from collections.abc import MutableMapping
+
+class WriteBackChainMap(ChainMap):
+    max_key_search_depth = 0
+    
+    def __getitem__(self, key):
+        q = deque([])
+        for mapping in self.maps:
+            try:
+                v = mapping[key]             # can't use 'key in mapping' with defaultdict
+                for d in q:
+                    d[key] = v
+                return v
+            except KeyError:
+                q.append(mapping)
+        return self.__missing__(key)  
+    
+    def __len__(self):
+        return len(set().union(*self.maps[:self.max_key_search_depth]))     # reuses stored hash values if possible
+
+    def __iter__(self):
+        d = {}
+        for mapping in reversed(self.maps[:self.max_key_search_depth]):
+            d.update(dict.fromkeys(mapping))    # reuses stored hash values if possible
+        return iter(d)
+
+    def __contains__(self, key):
+        return any(key in m for m in self.maps[:self.max_key_search_depth])
+    
+```
+
+## Templated project generator
+
+[Populate based on folder templates](https://github.com/i2mint/wads/issues/3)
+ 
+See cookiecutter: https://cookiecutter.readthedocs.io
+
+
+## Fluid interface for py2store wrappers
+
+* SQLAlchemy and Fluent APIs: https://stackoverflow.com/a/44649390/100297
+* https://stackoverflow.com/questions/57040151/how-is-precedence-grouping-implemented-in-sqlalchemy
+* https://stackoverflow.com/a/65773908/100297
+
+TW: Fluent: https://github.com/dwt/fluent
 
 # 2021-04-01
 
