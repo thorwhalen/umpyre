@@ -1,3 +1,16 @@
+# 2021-05-06
+
+## Topics
+
+https://github.com/search?l=&o=desc&q=user%3Athorwhalen+user%3Ai2mint+user%3Aotosense&s=updated&type=Issues
+
+Main: Fluid interface for py2store wrappers.
+
+Littles:
+- [Populate based on folder templates](https://github.com/i2mint/wads/issues/3)
+- [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
+- [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
+
 # 2021-04-01
 
 https://github.com/i2mint/mongodol/blob/d4e65280c660e1f40dae2933cfdfadcb3c91ec3e/mongodol/tracking_methods.py
