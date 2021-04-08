@@ -1,0 +1,91 @@
+# Problem: Need multisets
+
+(Pre-problem: You don't know what a multiset is!)
+
+A multiset is a (useful) generalization of a set. 
+
+Like a set, it doesn't care about order. Unlike a set, it specifies a count/weight with every element it contains. 
+
+And like with a set, you can operate on multisets (union, intersection, compliment...). 
+
+# Solution: `collections.Counter`
+
+`collections` proves its worthyness once again!
+`Counter`... well... **is** a multiset. Enough said:
+
+Just like with sets, can use `|` (for union), `&` (for intersection) and `x-y` to get the compliment of `y` (within `x`).
+But note what it means here:
+
+```python
+x = Counter({'a': 2, 'b': 3}) 
+y = Counter({'b': 4, 'c': 6})
+assert x | y == Counter({'a': 2, 'b': 4, 'c': 6})
+assert x & y == Counter({'b': 3})
+assert x + y == Counter({'a': 2, 'b': 7, 'c': 6})
+assert x - y == Counter({'a': 2})
+```
+
+## More details
+
+Note though, that you don't have **all** of `set`'s methods:
+
+```python
+# print(*sorted(set(dir(Counter)) - set(dir(set))), sep='\n')
+__ixor__
+__rand__
+__ror__
+__rsub__
+__rxor__
+__xor__
+add
+difference
+difference_update
+discard
+intersection
+intersection_update
+isdisjoint
+issubset
+issuperset
+remove
+symmetric_difference
+symmetric_difference_update
+union
+```
+
+Note that you can recreate all of these with the base operation though.
+
+That list's hides another missing operation. 
+Though you **do** have comparison operators (because **all** python objects have them), only `==` actually works with `Counter`. 
+
+You can do this (note that `x<y` means "x is STRICTLY contained in y" and `x<=y` means "x is contained or equal to y":
+
+```python
+assert {1,2} < {1,2,3}
+assert not {1,2} < {1,2}
+assert {1,2} <= {1,2}
+assert not {1,2} <= {2,3}
+```
+
+But `x<y` will raise a `TypeError: '<' not supported`  with `Counter` (shame!).
+
+You do have a few extras in `Counter` (that `set` doesn't have).
+First of all, you have everything that a `dict` has (because, `Counter` is a subclass of `dict`). 
+Additionally, you have:
+
+```python
+# print(*sorted(set(dir(Counter)) - set(dir(set)) - set(dir(dict))), sep='\n')
+__add__
+__dict__
+__iadd__
+__missing__
+__module__
+__neg__
+__pos__
+__weakref__
+_keep_positive
+elements
+most_common
+subtract
+```
+
+
