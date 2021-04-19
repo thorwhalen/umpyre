@@ -1,6 +1,7 @@
 # Upcoming
 
 Littles:
+- [config store](https://github.com/i2mint/py2store/blob/master/py2store/slib/s_configparser.py) tests not working anymore
 - [supressing ModuleNotFound and ImportError](https://github.com/i2mint/py2store/blob/master/py2store/__init__.py#L120) sanity check
 - [bolton's make sentinel](https://boltons.readthedocs.io/en/latest/modules/boltons/typeutils.html#make_sentinel) review and commentary
 - [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
