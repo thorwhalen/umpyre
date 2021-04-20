@@ -1,7 +1,7 @@
 # Upcoming
 
 Littles:
-- [unbox](https://github.com/i2mint/unbox/blob/247fe856c446061ea982b359105f113e7756ae16/unbox/base.py#L119) builtin_module_names not at all builtin module names
+- https://github.com/thorwhalen/umpyre/issues/46
 - [config store](https://github.com/i2mint/py2store/blob/master/py2store/slib/s_configparser.py) tests not working anymore
 - [supressing ModuleNotFound and ImportError](https://github.com/i2mint/py2store/blob/master/py2store/__init__.py#L120) sanity check
 - [bolton's make sentinel](https://boltons.readthedocs.io/en/latest/modules/boltons/typeutils.html#make_sentinel) review and commentary
