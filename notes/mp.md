@@ -1,6 +1,6 @@
 # Upcoming
 
-Littles:
+- revise the reasons of `@wraps(obj, updated=())` in [cls_wrap](https://github.com/i2mint/dol/blob/8ba679fb57a2da268220ebf5734d7a64c0ced4a9/dol/base.py#L223)
 - https://github.com/thorwhalen/umpyre/issues/46
 - [config store](https://github.com/i2mint/py2store/blob/master/py2store/slib/s_configparser.py) tests not working anymore
 - [supressing ModuleNotFound and ImportError](https://github.com/i2mint/py2store/blob/master/py2store/__init__.py#L120) sanity check
