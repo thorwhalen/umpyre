@@ -9,6 +9,100 @@
 - [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
 
 
+# 2021-05-29
+
+## Iterators vs. iterables
+
+- if you only implement `__iter__`, you have an *iterable*. The method must return an *iterator*; making the method a generator function suffices as generators are iterables.
+- if you implement `__next__`, you have an *iterator*, not an *iterable*. In that case `__iter__` **must** return `self`.
+
+See https://docs.python.org/3/library/stdtypes.html#iterator-types
+
+
+### Example: Creek's next (which shouldn't be there)
+https://github.com/i2mint/creek/blob/master/creek/base.py
+
+The `Creek` class has:
+```python
+    def __iter__(self):
+        yield from self.post_iter(
+            map(self.data_to_obj,
+                self.pre_iter(
+                    self.stream)))
+
+    def __next__(self):  # TODO: Pros and cons of having a __next__?
+        """by default: next(iter(self))
+        Expect to
+        """
+        return next(iter(self))
+
+```
+Nah: If you have a next, the iter should return self. 
+
+Shouldn't have the next in creek.
+
+
+### Metaclasses, the scary bit
+
+See https://docs.python.org/3/reference/datamodel.html#determining-the-appropriate-metaclass
+
+Mixing class hierarchies with different metaclasses that do not share a base metaclass can cause issues.
+
+
+## Delegation decorator
+
+https://programmingideaswithjake.wordpress.com/2015/05/23/python-decorator-for-simplifying-delegate-pattern/
+
+
+```python
+def delegate_as(delegate_cls, to='delegate', include=frozenset(), ignore=frozenset()):
+    # turn include and ignore into sets, if they aren't already
+    if not isinstance(include, Set):
+        include = set(include)
+    if not isinstance(ignore, Set):
+        ignore = set(ignore)
+    delegate_attrs = set(delegate_cls.__dict__.keys())
+    attributes = include | delegate_attrs - ignore
+
+    def inner(cls):
+        # create property for storing the delegate
+        setattr(cls, to, SimpleProperty())
+        # don't bother adding attributes that the class already has
+        attrs = attributes - set(cls.__dict__.keys())
+        # set all the attributes
+        for attr in attrs:
+            setattr(cls, attr, DelegatedAttribute(to, attr))
+        return cls
+    return inner
+  ```
+
+## misc
+
+```python
+from typing import Set
+
+assert isinstance(set([]), Set)
+assert not isinstance(frozenset([]), Set)
+```
+
+```
+>>> from collections.abc import Set
+>>> isinstance(frozenset(), Set)
+True
+>>> frozenset() == frozenset([])
+True
+```
+
+```python
+from collections.abc import Set, MutableSet
+
+assert isinstance(set([]), Set)
+assert not isinstance(frozenset([]), MutableSet)
+```
+
+
+
+
 # 2021-05-06
 
 https://github.com/search?l=&o=desc&q=user%3Athorwhalen+user%3Ai2mint+user%3Aotosense&s=updated&type=Issues
