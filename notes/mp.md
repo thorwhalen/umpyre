@@ -9,6 +9,60 @@
 - [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
 
 
+# 2021-05-04
+
+## Problem: delegation descriptor now found instead of function, signature lookups fail.
+
+## Context: `dol` (`py2store`) `base.py`
+
+`Store.wrap`, applied to instances, delegates to the wrapped instance. But when applied to a type (class), it doesn't; 
+this makes such checks as `hasattr(StoreType, attr)` fail. 
+Metaclasses and descriptors are two possible solutions. Went with descriptors. It worked, except `i2.signatures`'s `ensure_params` failed. 
+
+## Solution
+
+Instead of just a raising a `TypeError`, `ensure_params` now ends with:
+
+```python
+    # if nothing above worked, perhaps you have a wrapped object? Try unwrapping until you find a signature...
+    if hasattr(obj, "__wrapped__"):
+        obj = unwrap(obj, stop=(lambda f: hasattr(f, "__signature__")))
+        return ensure_params(obj)
+    else:  # if function didn't return at this point, it didn't find a match, so raise a TypeError
+        raise TypeError(
+            f"Don't know how to make that object into an iterable of inspect.Parameter objects: {obj}"
+        )
+```
+
+## Options were (mp)
+
+- Have the descriptor return the unbound delegate when `instance` is none. You would need a way to access the 'type'
+  object that you use in the `__init__` to create the delegatee, for this to work.
+   
+  Downside: debugging is harder this way, because **all access** to the name via class attribute lookups now return he proxied
+  object. You'd have to use `vars(class)["name"]` to get the descriptor itself.
+  
+- Explicitly handle the descriptor type, check for it with isinstance() before then looking up the type by other means to
+  create a signature.
+
+  Downside: brittle, the responsibility should not be on other code to special-case the descriptors.
+
+- Have the descriptor provide the signature. `inspect.signature(object)` will look for a `__signature__` attribute, so if your
+  descriptor object had such an attribute, things would Just Work. It should be an `inspect.Signature()` instance.
+
+  Downside: you need to give the descriptor objects access to the wrapped type, or pass in the signature up front when you
+  create the descriptor.
+
+- Define `__wrapped__`, pointing to the original unbound function on the type. You need to pass in
+  the `getattr(type, attr_name)` value to the descriptor for this or use `@wraps(getattr(type, attr_name))`.
+
+`inspect.signature()` will only accept callables, the descriptor is not callable. Option: unwrap before testing for callable /
+create signature. You can use the same mechanism:
+
+```python
+    obj = inspect.unwrap(obj, stop=(lambda f: hasattr(f, "__signature__")))
+```
+
 # 2021-05-29
 
 ## Iterators vs. iterables
