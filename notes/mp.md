@@ -13,7 +13,7 @@
 
 ## Problem: delegation descriptor now found instead of function, signature lookups fail.
 
-## Context: `dol` (`py2store`) `base.py`
+## Context: `dol` (`py2store`) `base.py`; `Store.wrap`
 
 `Store.wrap`, applied to instances, delegates to the wrapped instance. But when applied to a type (class), it doesn't; 
 this makes such checks as `hasattr(StoreType, attr)` fail. 
