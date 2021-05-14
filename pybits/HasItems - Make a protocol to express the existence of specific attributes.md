@@ -11,11 +11,7 @@ Here's a trick to get some base cases covered...
 
 I use [class getitem here](https://www.python.org/dev/peps/pep-0560/).
 
-Note: There's an exec in here. 
-Seemingly a safe one, but still -- I prefer to avoid code generation when ever I can, to keep the security freaks at bay. 
-(Though, come on! Builtin python `dataclasses` as'em, so why not me!?)
-
-Still, check out the examples, I think you'll find them useful.
+Check out the examples, I think you'll find them useful.
 
 ```python
 >>> assert isinstance(dict(), HasAttrs["items"])
@@ -48,15 +44,9 @@ class HasAttrs:
     """
     Make a protocol to express the existence of specific attributes.
     """
-
     def __class_getitem__(self, *attr_names):
-        if len(attr_names) == 1 and isinstance(attr_names[0], tuple):
-            attr_names = attr_names[0]
-        str_to_exec = f"class HasAttrs(Protocol):\n" + "\n".join(
-            f"\t{attr}: Any" for attr in attr_names
-        )
-        exec(str_to_exec)
-        return locals()["HasAttrs"]
+        annotations = {attr: Any for attr in attr_names}
+        return type('HasAttrs', (Protocol,), {'__annotations__': annotations})
 
 ```
 
