@@ -1,6 +1,6 @@
 # Problem: You want to make a bunch protocols just to validate the existence of specific attributes
 
-Python Protocols are a way to be able to do "behavior typing" (my bad terminology).
+[Python Protocols](https://www.python.org/dev/peps/pep-0544/) are a way to be able to do "behavior typing" (my bad terminology).
 Basically, if you want your static analyzer (the swingles in your IDE, or linter validation process...) to check if you're manipulating the expected types, except the types (classes, subclasses, ABCs, abstract classes...) are too restrictive (they are!), you can use Protocols to fill the gap.
 
 Except writing them can sometimes be verbose.
@@ -8,6 +8,8 @@ Except writing them can sometimes be verbose.
 Here's a trick to get some base cases covered...
 
 # Solution: HasAttrs (a little thing I wrote just for you)
+
+I use [class getitem here](https://www.python.org/dev/peps/pep-0560/).
 
 Note: There's an exec in here. 
 Seemingly a safe one, but still -- I prefer to avoid code generation when ever I can, to keep the security freaks at bay. 
