@@ -44,9 +44,22 @@ class HasAttrs:
     """
     Make a protocol to express the existence of specific attributes.
     """
-    def __class_getitem__(self, *attr_names):
-        annotations = {attr: Any for attr in attr_names}
-        return type('HasAttrs', (Protocol,), {'__annotations__': annotations})
+    def __class_getitem__(self, attr_names):
+        if isinstance(attr_names, str):
+            attr_names = [attr_names]
+        assert all(map(str.isidentifier, attr_names)), (
+            f"The following are not valid python 'identifiers' "
+            f"{', '.join(a for a in attr_names if not a.isidentifier())}"
+        )
 
+        annotations = {attr: Any for attr in attr_names}
+
+        class HasAttrs(Protocol):
+            __annotations__ = annotations
+
+            def __repr__(self):  # TODO: This is for the instance, need it for the class
+                return "HasAttrs[{', '.join(annotations)}]"
+
+        return HasAttrs
 ```
 
