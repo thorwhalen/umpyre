@@ -37,6 +37,9 @@ Effort is not uniform: Some tests are easier to write than others.
 [The three rules of TDD](http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd)
 [Unit testing guide](https://www.guru99.com/unit-testing-guide.html)
 
+![image](https://user-images.githubusercontent.com/1906276/118562928-7f73d200-b722-11eb-83eb-b1c0514e698b.png)
+
+
 ## But also, unit tests are...
 
 ![image](https://user-images.githubusercontent.com/1906276/118562417-80f0ca80-b721-11eb-9a08-878b87a5d174.png)
