@@ -12,6 +12,7 @@
   - What effect do unit tests and functional granularity (many small functions) have on each other?
   - Measure unit test value according to effect on user story tests
 
+![image](https://user-images.githubusercontent.com/1906276/118561127-6f0e2800-b71f-11eb-876f-525d6b6cf3e3.png)
 
 # Unit tests
 
@@ -25,6 +26,17 @@ From an effort point of view, these goals are contrary
 - more unit (test) coverage 
 - small units (Unvle Bob ("Clean Code") _The first rule of functions is that they should be small. The second rule of functions is that they should be smaller than that._)
 
+Devil's Advocate; perhaps a full coverage policy/goal might oblige people to write testible units, therefore better ones (ones with better separation of concerns, etc.)
+
 Effort is not uniform: Some tests are easier to write than others. 
 
-![image](https://user-images.githubusercontent.com/1906276/118561127-6f0e2800-b71f-11eb-876f-525d6b6cf3e3.png)
+
+## Unit tests are great
+
+[The importance of unit tests](https://fortegrp.com/the-importance-of-unit-testing/)
+[The three rules of TDD](http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd)
+[Unit testing guide](https://www.guru99.com/unit-testing-guide.html)
+
+## But also, unit tests are...
+
+![image](https://user-images.githubusercontent.com/1906276/118562417-80f0ca80-b721-11eb-9a08-878b87a5d174.png)
