@@ -1,8 +1,10 @@
-# Upcoming
+# Items to check on
 
 - https://github.com/i2mint/dol/blob/master/dol/tests/pickability.py
+- https://github.com/i2mint/i2/issues/4
 
-## Previous upcomings
+## A few previous items not yet resolved completely
+
 - revise the reasons of `@wraps(obj, updated=())` in [cls_wrap](https://github.com/i2mint/dol/blob/8ba679fb57a2da268220ebf5734d7a64c0ced4a9/dol/base.py#L223)
 - https://github.com/thorwhalen/umpyre/issues/46
 - [supressing ModuleNotFound and ImportError](https://github.com/i2mint/py2store/blob/master/py2store/__init__.py#L120) sanity check
