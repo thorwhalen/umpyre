@@ -12,6 +12,89 @@
 - [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
 - [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
 
+# 2021-05-21
+
+## Pickling problems
+
+Making [these tests](https://github.com/i2mint/dol/blob/master/dol/tests/pickability.py) work.
+
+- When unpickling, the module first uses `Class.__new__()` to create an _empty_ instance, then restores the attributes.
+- To restore, pickle looks for some dedicated support: `instance.__setstate__`.
+- But if you have a `__getattr__()` hook but no `__setstate__()`, then `Class.__getattr__(instance, "__setstate__")` is called.
+
+Bottom line: you can't make assumptions about any attributes existing inside `__getattr__`.
+
+What goes wrong:
+
+- The Wrapper class is _empty_, no attributes at all.
+- `self.store` doesn't exist, so triggers `__getattr__(self, "store")`,
+   which tries to access `self.store`, which doesn't exist, so trigg... you get the gist.
+- The workaround is to not use `self.store`, but some other way to access the attribute.
+  `self.__dict__` does exist (unless you used `__slots__`), so `self.__dict__["store"]`
+  would work, but that raises a `KeyError` instead of `AttributeError`.
+  Another option is `object.__getattribute__(self, "store")`.
+
+  Demo:
+
+```python
+>>> class Foo:  # old
+...     def __getattr__(self, name):
+...         return getattr(self.store, name)
+...
+>>> Foo().bar
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in __getattr__
+  File "<stdin>", line 3, in __getattr__
+  File "<stdin>", line 3, in __getattr__
+  [Previous line repeated 996 more times]
+RecursionError: maximum recursion depth exceeded
+>>>
+>>> class Foo:  # new
+...     def __getattr__(self, name):
+...         return getattr(object.__getattribute__(self, "store"), name)
+...
+>>> Foo().bar
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in __getattr__
+AttributeError: 'Foo' object has no attribute 'store'
+>>>
+>>> class Foo:
+...     def __getattr__(self, name):
+...         try:
+...             return getattr(self.__dict__["store"], name)
+...         except KeyError:
+...             raise AttributeError
+...
+>>> Foo().bar  # using self.__dict__
+Traceback (most recent call last):
+  File "<stdin>", line 4, in __getattr__
+KeyError: 'store'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 6, in __getattr__
+AttributeError
+
+```
+
+## Pickling expectations for types
+
+- For types, Pickle stores an import reference, `(__module__, __qualname__)`. When unpickling,
+  that pair is used to find the type back again.
+- Pickle, when pickling, **verifies** that `getattr(__import__(Type.__module__), Type.__qualname__) is Type` is true.
+  It does this to make sure you can load the same type again.
+
+Crazy pickle: https://pypi.org/project/dill/, can store types as serialised code object data.
+
+You can avoid the check:
+- if the type is registered in the [`copyreg` dispatch table](https://docs.python.org/3/library/copyreg.html)
+- if the instance implements `__reduce_ex__` or `__reduce__`, which must return a reference to something
+  that will still be checked against its own `(__module__, __gualname__)` pair.
+  https://docs.python.org/3/library/pickle.html#object.__reduce__
 
 # 2021-05-04
 
