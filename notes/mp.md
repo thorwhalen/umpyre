@@ -12,6 +12,141 @@
 - [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
 - [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
 
+# 2021-05-25
+
+## Pickling stores (continued)
+
+Since last week, `Store(d)` is pickalable, but now we'll solve the pickability of a wrapped store (`Store.wrap(dict)(d)`).
+
+A few relevant snippet.
+
+```python
+def delegator_wrap(
+    delegator: Callable, obj: Union[type, Any], delegation_attr: str = 'store'
+): ...
+
+class Store:
+  def __init__(self, store=dict):
+    if isinstance(store, type):
+        store = store()
+    self.store = store
+  wrap = classmethod(partial(delegator_wrap, delegation_attr='store'))
+
+```
+
+Solved by adding a `__reduce__` in the `Wrap` class made in `delegate_to`:
+
+```python
+            def __reduce__(self):
+                return (
+                    # reconstructor
+                    wrapped_delegator_reconstruct,
+                    # args of reconstructor
+                    (wrapper_cls, wrapped, delegation_attr),
+                    # instance state
+                    self.__getstate__(),
+                )
+                
+```
+
+where 
+
+```python
+def wrapped_delegator_reconstruct(wrapped_cls, wrapped, delegation_attr):
+    """"""
+    type_ = delegator_wrap(wrapped_cls, wrapped, delegation_attr)
+    # produce an empty object for pickle to pour the
+    # __getstate__ values into, via __setstate__
+    return copyreg._reconstructor(type_, object, None)
+```
+
+## Example of manual reconstruction
+
+```python
+d = {'a': 1, 'b': 2}
+
+D = Store.wrap(dict)
+s = D(d)
+
+recon, recon_args, instance_state = s.__reduce__()
+print(recon, recon_args, instance_state)
+# <function wrapped_delegator_reconstruct at 0x1272ceee0> (<class 'dol.base.Store'>, <class 'dict'>, 'store') {'store': {'a': 1, 'b': 2}}
+
+new_instance = recon(*recon_args);
+new_instance.__setstate__(instance_state)
+new_instance
+# {'a': 1, 'b': 2}
+
+```
+
+## Notes
+
+[pickle documentation](https://docs.python.org/3/library/pickle.html)
+
+Normal pickling without `__getstate__`:
+
+```python
+
+# copyreg._reconstructor:
+def _reconstructor(cls, base, state):
+    if base is object:
+        obj = object.__new__(cls)
+    else:
+        obj = base.__new__(cls, state)
+        if base.__init__ != object.__init__:
+            base.__init__(obj, state)
+    return obj
+```
+
+This is used by the _default `__reduce__` implementation as the first argument_:
+
+```python
+>>> class Foo:
+...     def __init__(self): self.x = 42
+...
+>>> Foo().__reduce__()
+(<function _reconstructor at 0x10c12faf0>, (<class '__main__.Foo'>, <class 'object'>, None), {'x': 42})
+```
+
+Example case:
+
+```python
+from dol import Store
+
+D = Store.wrap(dict)
+s = D(d)
+pickle.dumps(s)
+```
+
+- pickling should store enough information to restore `s`
+- `D`: (`Store.wrap`, `dict`), `s` (`D`, `d`)
+- pickle can't handle `D` -> type, `__module__`, `__qualname__`.
+- pickle _could_ handle `Store.wrap` and `dict`.
+
+`s` -> `__reduce__`-> (`?`, (`Store.wrap`, `dict`) `{...: d}`)
+
+* `pickle.dumps` calls `__reduce__`, gets `(callable, args, ...)`
+* `pickle.loads` finds `(callable, args, ...)` -> creates instance with `callable(*args)`, then applies `...` as needed.
+   for example, if the 3rd argument is there, `instance = callable(*args)`, then `instance.__setstate__(third_argument)` is executed.
+
+```python
+# reconstructor
+def wrapped_delegator_reconstruct(wrapped_cls, wrapped, delegation_attr):
+    type_ = delegator_wrap(wrapped_cls, wrapped, delegation_attr)
+    # produce an empty object for pickle to pour the __getstate__ values into, via __setstate__
+    return copyreg._reconstructor(type_, object, None)
+
+
+# hypothetical `__reduce__` implementation
+def __reduce__(self):
+    Wrap = type(self)
+    wrapped_cls = Wrap.__bases__[0]
+    wrapped = Wrap._type_of_wrapped
+    delegation_attr = Wrap._delegation_attr
+    return (wrapped_delegator_reconstruct, (wrapped_cls, wrapped, delegation_attr), self.__getstate__())
+```
+
+
 # 2021-05-21
 
 ## Pickling problems
