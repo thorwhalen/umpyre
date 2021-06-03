@@ -12,6 +12,25 @@
 - [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
 - [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
 
+
+# 2021-06-03
+
+## Pickling stores (continued) -- the wrappers
+
+### Reconstructing layered classes
+
+- You now call `Store.wrap(base)`, then wrap the returned "store"
+- Instead, call `Store.wrap(base, callback)`. This calls `callback(store)` right now, and uses the result and also _records the callback_.
+  That way, when unpickling, you still have that callback and can call it again rebuild the stack.
+
+
+What about:
+`Store.wrap(base, constructor_func, construction_args, construction_kwargs)`?
+
+The `Store.wrap()` codebase then uses `return constructor_func(store, *constructor_args, **construction_kwargs)` at 
+the end. Or, it may have used a whole list of those contructors.
+
+
 # 2021-05-25
 
 ## Pickling stores (continued)
