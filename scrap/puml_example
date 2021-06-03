@@ -1,0 +1,5 @@
+@startuml
+Bob -> Alice : hello
+Alice -> Charlie: Bob said hello
+Charlie -> Bob: Stop flirting with Alice
+@enduml
