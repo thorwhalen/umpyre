@@ -1,5 +1,6 @@
 # Items to check on
 
+- (tuple_the_args)[https://github.com/i2mint/i2/blob/master/i2/signatures.py#L1811] when func has no VP kind -- should one return a copy of the function (in decorators, in general). Also, how to access the local variables of the wrapped function. Pros/cons of using a delegating class instead of a closure for decorations. If class, should we use `.__wrapped__` to hold the original function? `partial` uses `.func`.
 - https://github.com/i2mint/dol/blob/master/dol/tests/pickability.py
 - https://github.com/i2mint/i2/issues/4
 
