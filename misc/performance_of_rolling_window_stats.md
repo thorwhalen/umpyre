@@ -1,4 +1,18 @@
 
+# In a nutshell
+
+You need to maintain some stats about a sliding window. 
+You are tempted to figure out a way to compute these states based on some clever function of `(state, incomming_data, outgoing_data)` function. 
+Fine, but most of the time you shouldn't start with that. 
+
+Instead you should start with the simpler function of `window` only.
+Why?
+Because often the clever function won't give you much gain in efficiency, but will invariably give you a gain in complexity.
+Worst case scenario? You need the clever way after all. 
+But hey, now you have a (slower) way you can test the (more complex) way against -- mitigating the complexity cost!
+
+# More details
+
 We have a stream/sequence of values and we'd like to get a stream/sequence of window statistics of these numbers. 
 Typical examples is "moving average", which boils down to a moving sum if we assume (we do!) the window is of fixed size.
 
