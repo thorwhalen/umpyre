@@ -2,7 +2,7 @@
 # In a nutshell
 
 You need to maintain some stats about a sliding window. 
-You are tempted to figure out a way to compute these states based on some clever function of `(state, incomming_data, outgoing_data)` function. 
+You are tempted to figure out a way to compute these states based on some clever function of `(state, incoming_data, outgoing_data)` function. 
 Fine, but most of the time you shouldn't start with that. 
 
 Instead you should start with the simpler function of `window` only.
