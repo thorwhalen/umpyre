@@ -1,5 +1,6 @@
 # Items to check on
 
+- How to not override a function when decorating. See Sig.wraps.
 - `singledispatch` not very useful if can't use typing constructs (like `Iterable[int]` vs `Iterable[str]`) to define cases. Any plans to address this limitation?
 - (tuple_the_args)[https://github.com/i2mint/i2/blob/master/i2/signatures.py#L1811] when func has no VP kind -- should one return a copy of the function (in decorators, in general). Also, how to access the local variables of the wrapped function. Pros/cons of using a delegating class instead of a closure for decorations. If class, should we use `.__wrapped__` to hold the original function? `partial` uses `.func`.
 - https://github.com/i2mint/dol/blob/master/dol/tests/pickability.py
