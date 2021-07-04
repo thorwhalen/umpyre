@@ -7,7 +7,9 @@
 ## Build py2store readers/persisters
 
 By writing your own py2store reader and/or persister, you'll necessarily put a toe in the world of dunders, 
-which will enhance your modeling abilities more than you'll realize immediately. 
+which will enhance your modeling abilities more than you'll realize immediately. For example:
+- [wikipedia](https://wikipedia.readthedocs.io/en/latest/code.html)
+- [patool](https://pypi.org/project/patool/): A data compression "normalizing" package. [See homepage](http://wummel.github.io/patool/). Quite old. If too old, find alternative. Needs to cover many compression types.
 
 ## Data prep
 
@@ -30,9 +32,9 @@ and use it to solve sound recognitiion problems!
 
 # Markov and Bayes
 
-## Hyp (to be rebranded)
+## Spyn
 
-https://github.com/thorwhalen/hyp
+https://github.com/thorwhalen/spyn
 
 Tools to get from data to operable count/probability/likelihood tables, and perform bayesian analysis, close to the data.
 
@@ -40,7 +42,7 @@ Tools to get from data to operable count/probability/likelihood tables, and perf
 
 https://github.com/thorwhalen/odus
 
-Data and tools that demo (using py2store and hypy) how to build a layer over tabular data that produces, on demand, 
+Data and tools that demo (using `py2store` and `spyn`) how to build a layer over tabular data that produces, on demand, 
 operable perspectives of subsets of variables allowing Markovian and Bayesian analysis to be carried out seamlessly. 
 
 
