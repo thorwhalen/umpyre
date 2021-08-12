@@ -9,7 +9,7 @@ For starters, our main focus will be generating sound -- that is, servicing the 
 
 Our main tools will be taken from [creek](https://github.com/i2mint/creek). 
 
-[Project name candidates](##project-name-candidates)
+[Project name candidates](#project-name-candidates)
 
 
 
