@@ -11,7 +11,6 @@ Our main tools will be taken from [creek](https://github.com/i2mint/creek).
 
 [Project name candidates](##project-name-candidates)
 
-```
 
 
 # Design
@@ -62,3 +61,4 @@ like a generator, a stream object, a or a `creek.InfiniteSeq` which gives you th
 2: a necklace made by a stringing objects together (chain.n.10)
 --- genic ---
 0: of or relating to or produced by or being a gene (genic.a.01)
+```
