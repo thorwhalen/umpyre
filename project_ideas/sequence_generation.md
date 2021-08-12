@@ -1,3 +1,9 @@
+**The development of these ideas (and code!) has moved to the [slink](https://github.com/otosense/slink/) project**
+
+For example, these design notes are now [here](https://github.com/otosense/slink/blob/master/misc/design_notes.md)
+
+
+
 # Objective
 
 This package offers tools for generating sequences. Finite ones like lists and arrays, or infinite ones like streams. 
