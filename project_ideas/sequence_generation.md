@@ -7,10 +7,9 @@ The target (i.e. final) sequence items would be samples of a signal (like sound,
 
 For starters, our main focus will be generating sound -- that is, servicing the [hum](https://github.com/otosense/hum) package. 
 
-Our main tools will be taken from [creek](https://github.com/i2mint/creek). 
+Our main tools will be taken from [creek](https://github.com/i2mint/creek) and possibly [lined]()
 
-[Project name candidates](#project-name-candidates)
-
+Or working name will be `rill`, but see [project name candidates](#project-name-candidates).
 
 
 # Design
@@ -26,6 +25,27 @@ and you get a waveform `wf`.
 
 This `wf` could be a fixed-size object like an array, or could be a source of unbounded amounts of data, 
 like a generator, a stream object, a or a `creek.InfiniteSeq` which gives you the array-like ability to slice (i.e. `wf[i:j]`). 
+
+The purpose of `rill` is to provide tools to get from params to this `wf`, or what ever the target sequence maybe. 
+The main means of doing so is through a chain of sequences each one being a function of the previous. 
+This function could do things like...
+
+```python
+a, b, c... -> wf_for(a), wf_for(b), wf_for(c), ...  # generate elements of the next sequence based on the items of the last
+wf_a, wf_b, wf_c... -> add_noise(wf_a), add_noise(wf_b), add_noise(wf_c), ... # transform the items of the last sequence
+-> concatinate(wf_a_with_noise, ...)  # aggregate these items
+-> chunk -> wf_chk_1, wf_chk_2, ...  # split these items
+```
+
+All but the last sequence functions above were all 
+- `map` (applying the same function to each element of the input sequence) 
+- `reduce` (aggregating all sequence items into one object -- though that object may be a sequence itself)
+
+But some functions can have more complex mechanisms such as inner-state and buffers. 
+This is important to note, since the developer may be tempted to accomodate for sequence functions that operate on a window instead of a single item. 
+But accomodating for this directly would complexify the interface.
+Instead, we propose to use a mechanism like `lined.BufferStats` to offer a window-input functionality with a single-item-at-a-time interface.
+
 
 
 # Appendices
