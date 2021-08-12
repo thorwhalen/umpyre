@@ -9,7 +9,7 @@ For starters, our main focus will be generating sound -- that is, servicing the 
 
 Our main tools will be taken from [creek](https://github.com/i2mint/creek) and possibly [lined]()
 
-Or working name will be `rill`, but see [project name candidates](#project-name-candidates).
+Or working name will be `slink`, but see [project name candidates](#project-name-candidates).
 
 
 # Design
@@ -26,7 +26,7 @@ and you get a waveform `wf`.
 This `wf` could be a fixed-size object like an array, or could be a source of unbounded amounts of data, 
 like a generator, a stream object, a or a `creek.InfiniteSeq` which gives you the array-like ability to slice (i.e. `wf[i:j]`). 
 
-The purpose of `rill` is to provide tools to get from params to this `wf`, or what ever the target sequence maybe. 
+The purpose of `slink` is to provide tools to get from params to this `wf`, or what ever the target sequence maybe. 
 The main means of doing so is through a chain of sequences each one being a function of the previous. 
 This function could do things like...
 
@@ -45,6 +45,29 @@ But some functions can have more complex mechanisms such as inner-state and buff
 This is important to note, since the developer may be tempted to accomodate for sequence functions that operate on a window instead of a single item. 
 But accomodating for this directly would complexify the interface.
 Instead, we propose to use a mechanism like `lined.BufferStats` to offer a window-input functionality with a single-item-at-a-time interface.
+
+## Examples of sequence functions
+
+For categoricals: Use the `__getitem__` of a mapping that relates each element of a finite set of seeds to a waveform, 
+or parameters that will be used to produce the waveform:
+
+```python
+cat_map = {'a': [1,2,3], 'b': [4,5,6]}
+item_func_1 = cat_map.__getitem__
+# to make the sequence function from this item func, you can do:
+from lined import iterize
+seq_func_1 = iterize(item_func_1)
+```
+
+Could also use finite mappings like above for numericals by first using a function that will map to a categorical
+
+```python
+num_to_cat = lambda num: list(cat_map)[num % len(cat_map)]
+from lined import iterize, Line
+seq_func_2 = iterize(Line(num_to_cat, item_func_1))
+```
+
+`Line` composes `num_to_cat` and `item_func_1` and `iterize` makes the item-to-item function into a sequence-to-sequence function.
 
 
 
