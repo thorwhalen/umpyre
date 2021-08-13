@@ -96,7 +96,8 @@ Below are some projects I developed, or took a significant part in developing.
 
 [codify](https://github.com/thorwhalen/codify): Generate codes
 
-[swipe](https://github.com/thorwhalen/swipe): There's a bit of an air of mystery around this project...
+[swipe](https://github.com/thorwhalen/swipe): Swipe through data once, with a comb that will pick up the points you're looking for.
+
 
 
 
