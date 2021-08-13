@@ -1,5 +1,6 @@
 # Items to check on
 
+- [Automatic fallbacks](https://github.com/thorwhalen/umpyre/blob/master/project_ideas/automatic_fallbacks.md)
 - Graze (and probably others) has Store's signature! Should have it's own.
 - How to not override a function when decorating. See Sig.wraps.
 - `singledispatch` not very useful if can't use typing constructs (like `Iterable[int]` vs `Iterable[str]`) to define cases. Any plans to address this limitation?
