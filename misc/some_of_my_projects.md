@@ -88,6 +88,8 @@ Below are some projects I developed, or took a significant part in developing.
 
 ## etc
 
+[brand](https://github.com/thorwhalen/brand): Finding available domain names
+
 [tapyoca](https://github.com/thorwhalen/tapyoca): A medley of things that got coded because there was an itch to do so
 
 [msword](https://github.com/thorwhalen/msword): Simple mapping view to docx (Word Doc) elements
@@ -97,7 +99,6 @@ Below are some projects I developed, or took a significant part in developing.
 [codify](https://github.com/thorwhalen/codify): Generate codes
 
 [swipe](https://github.com/thorwhalen/swipe): Swipe through data once, with a comb that will pick up the points you're looking for.
-
 
 
 
@@ -156,7 +157,8 @@ This one is used in many i2i projects:
 
 [creek](https://github.com/i2mint/creek): Simple streams facade
 
-
+[slink](https://github.com/otosense/slink): Generate sequences
+ 
 
 ## Computational structure
 
