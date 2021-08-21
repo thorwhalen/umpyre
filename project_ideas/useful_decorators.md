@@ -2,6 +2,9 @@
 
 # Decorator to handle the item -> iterable of items case and generalizations
 
+Done! [ensure_iterable_args](https://i2mint.github.io/i2/module_docs/i2/deco.html#i2.deco.ensure_iterable_args) implemented in `i2.deco`.
+
+
 *Use Case*: Want to handle an iterable of items, but want to allow the user to specify a single item (because it's a frequent case). 
 
 *Example*: 
@@ -24,4 +27,6 @@ def greet_people(names, greeting='Hello'):
 ```
 
 This is especially useful if you have several functions with several arguments that need this treatment.
+
+Related: https://stackoverflow.com/questions/68872682/pythonic-recipe-to-get-more-flexible-function-currying
 
