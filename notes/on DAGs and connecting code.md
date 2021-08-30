@@ -32,5 +32,6 @@ but this list should still be useful, to a constructive-attitude reader, to seed
   * Add logging, caching, error handling to sub-components
   * Edit (add, remove, replace components)
 * View the components and their connections
+* Parallelize computation
 
 
