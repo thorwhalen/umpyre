@@ -182,6 +182,8 @@ This one is used in many i2i projects:
 
 [isee](https://github.com/i2mint/isee): Python continuous integration (CI) support tools.
 
+[test2doc](https://github.com/i2mint/test2doc): Generate documentation from tests.
+
 
 
 ## Dispatching
