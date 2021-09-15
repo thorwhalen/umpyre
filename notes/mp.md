@@ -1,5 +1,6 @@
 # Items to check on
 
+- `signatures._robust_signature_of_callable` TODO: Might want to monkey-patch `inspect._signature_from_callable` to use sigs_for_sigless_builtin_name
 - lined/tools.py can't be blackified!
 - [Automatic fallbacks](https://github.com/thorwhalen/umpyre/blob/master/project_ideas/automatic_fallbacks.md)
 - Graze (and probably others) has Store's signature! Should have it's own.
