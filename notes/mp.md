@@ -1,5 +1,6 @@
 # Items to check on
 
+- https://github.com/i2mint/i2/issues/8
 - https://github.com/thorwhalen/umpyre/issues/58
 - `signatures._robust_signature_of_callable` TODO: Might want to monkey-patch `inspect._signature_from_callable` to use sigs_for_sigless_builtin_name
 - [Automatic fallbacks](https://github.com/thorwhalen/umpyre/blob/master/project_ideas/automatic_fallbacks.md)
