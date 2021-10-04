@@ -1,5 +1,6 @@
 # Items to check on
 
+- Uses of generators with both yield and return
 - [Command init not clean](https://github.com/i2mint/verb/issues/4)
 - [Use wrapper.Wrap to transform functions into methods](https://github.com/i2mint/i2/issues/8)
 - [templated object generation](https://github.com/thorwhalen/umpyre/issues/58)
