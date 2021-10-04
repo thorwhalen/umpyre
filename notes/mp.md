@@ -1,8 +1,8 @@
 # Items to check on
 
-- https://github.com/i2mint/verb/issues/4
-- https://github.com/i2mint/i2/issues/8
-- https://github.com/thorwhalen/umpyre/issues/58
+- [Command init not clean](https://github.com/i2mint/verb/issues/4)
+- [Use wrapper.Wrap to transform functions into methods](https://github.com/i2mint/i2/issues/8)
+- [templated object generation](https://github.com/thorwhalen/umpyre/issues/58)
 - `signatures._robust_signature_of_callable` TODO: Might want to monkey-patch `inspect._signature_from_callable` to use sigs_for_sigless_builtin_name
 - [Automatic fallbacks](https://github.com/thorwhalen/umpyre/blob/master/project_ideas/automatic_fallbacks.md)
 - Graze (and probably others) has Store's signature! Should have it's own.
