@@ -1,5 +1,6 @@
 # Items to check on
 
+- [aligned_umap_analysis](https://github.com/thorwhalen/wealth/blob/master/wealth/aligned_umap_analysis.py): typing (alias vs newtype; linter doesn't see that `Relations` is a `List[Relation]`) and meshed-postel example.
 - Uses of generators with both yield and return
 - [Command init not clean](https://github.com/i2mint/verb/issues/4)
 - [Use wrapper.Wrap to transform functions into methods](https://github.com/i2mint/i2/issues/8)
