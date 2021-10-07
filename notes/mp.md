@@ -3,7 +3,6 @@
 - [aligned_umap_analysis](https://github.com/thorwhalen/wealth/blob/master/wealth/aligned_umap_analysis.py): typing (alias vs newtype; linter doesn't see that `Relations` is a `List[Relation]`) and meshed-postel example.
 - Uses of generators with both yield and return
 - [Command init not clean](https://github.com/i2mint/verb/issues/4)
-- [Use wrapper.Wrap to transform functions into methods](https://github.com/i2mint/i2/issues/8)
 - [templated object generation](https://github.com/thorwhalen/umpyre/issues/58)
 - `signatures._robust_signature_of_callable` TODO: Might want to monkey-patch `inspect._signature_from_callable` to use sigs_for_sigless_builtin_name
 - [Automatic fallbacks](https://github.com/thorwhalen/umpyre/blob/master/project_ideas/automatic_fallbacks.md)
@@ -23,7 +22,10 @@
 - [Make aix configurable](https://github.com/thorwhalen/aix/issues/1)
 - [Recursive subpackage/submodule walk](https://github.com/thorwhalen/aix/issues/2)
 
+## Resolved
 
+- [Use wrapper.Wrap to transform functions into methods](https://github.com/i2mint/i2/issues/8)
+- 
 # 2021-06-03
 
 ## Pickling stores (continued) -- the wrappers
