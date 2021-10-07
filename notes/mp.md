@@ -6,7 +6,6 @@
 - [templated object generation](https://github.com/thorwhalen/umpyre/issues/58)
 - `signatures._robust_signature_of_callable` TODO: Might want to monkey-patch `inspect._signature_from_callable` to use sigs_for_sigless_builtin_name
 - [Automatic fallbacks](https://github.com/thorwhalen/umpyre/blob/master/project_ideas/automatic_fallbacks.md)
-- Graze (and probably others) has Store's signature! Should have it's own.
 - How to not override a function when decorating. See Sig.wraps.
 - `singledispatch` not very useful if can't use typing constructs (like `Iterable[int]` vs `Iterable[str]`) to define cases. Any plans to address this limitation?
 - (tuple_the_args)[https://github.com/i2mint/i2/blob/master/i2/signatures.py#L1811] when func has no VP kind -- should one return a copy of the function (in decorators, in general). Also, how to access the local variables of the wrapped function. Pros/cons of using a delegating class instead of a closure for decorations. If class, should we use `.__wrapped__` to hold the original function? `partial` uses `.func`.
@@ -25,7 +24,8 @@
 ## Resolved
 
 - [Use wrapper.Wrap to transform functions into methods](https://github.com/i2mint/i2/issues/8)
-- 
+- Graze (and probably others) has Store's signature! Should have it's own.
+
 # 2021-06-03
 
 ## Pickling stores (continued) -- the wrappers
