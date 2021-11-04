@@ -33,7 +33,7 @@ arg_not_specified = object()
 no_result = object()
 
 def foo(arr, x=arg_not_specified):
-    if x is None:
+    if x is arg_not_specified:
         return no_result
     else:
         return x * arr
@@ -71,6 +71,7 @@ def foo(arr=(), x: int=arg_not_specified):
 
 # Appendix
 
+## Defining a bunch of sentinels in one line
 If you want to define a bunch of sentinels to be used in a module or package, you can also do it like this:
 
 ```python
@@ -78,3 +79,13 @@ If you want to define a bunch of sentinels to be used in a module or package, yo
  ```
  
  But you may be accused of being an extremist if you do so.
+ 
+ ## Performance
+ 
+ The following compares using `None`, `object()`, and `type('named_sentinel', (), {})()` as a sentinel. 
+ 
+ Observation: `None` is twice faster to compare to itself. 
+ No significant differences to compare "something" (in this case, a variable containing an int) to a sentinel. 
+ 
+ ![image](https://user-images.githubusercontent.com/1906276/140366599-b36eb848-c300-477c-808d-83e15d1c477b.png)
+
