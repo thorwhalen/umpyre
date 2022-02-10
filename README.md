@@ -50,11 +50,11 @@ But those I would really like to to focus on here are those that have a particul
 
 ## Books on design
 
-•	[Design-Everyday-Things](https://www.amazon.com/Design-Everyday-Things-Revised-Expanded/dp/0465050654/ref=sr_1_1?keywords=the+design+of+everyday+things&qid=1644529814&sprefix=the+desi%2Caps%2C288&sr=8-1)
-•	[Software-Design-Flexibility-Programming](https://www.amazon.com/Software-Design-Flexibility-Programming-Yourself/dp/0262045494/ref=sr_1_1?crid=S043IE5U6OWD&keywords=software+flexibility&qid=1644529893&sprefix=software+flexibility%2Caps%2C125&sr=8-1)
-•	[Design-Patterns-Elements-Reusable-Object-Oriented](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=sr_1_1?crid=MY5ACIVMVDYM&keywords=design+patterns&qid=1644530558&sprefix=design+patterns%2Caps%2C137&sr=8-1)
-•	[Clean-Code-Handbook-Software-Craftsmanship](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?crid=1YD3GUKA6XL7K&keywords=clean+code&qid=1644529913&sprefix=clean+code%2Caps%2C119&sr=8-1)
-•	[Clean-Architecture-Craftsmans-Software-Structure](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_1?keywords=clean+architecture+by+robert+c.+martin&qid=1644530474&sprefix=clean+archi%2Caps%2C113&sr=8-1)
+* [Design-Everyday-Things](https://www.amazon.com/Design-Everyday-Things-Revised-Expanded/dp/0465050654/ref=sr_1_1?keywords=the+design+of+everyday+things&qid=1644529814&sprefix=the+desi%2Caps%2C288&sr=8-1)
+* [Software-Design-Flexibility-Programming](https://www.amazon.com/Software-Design-Flexibility-Programming-Yourself/dp/0262045494/ref=sr_1_1?crid=S043IE5U6OWD&keywords=software+flexibility&qid=1644529893&sprefix=software+flexibility%2Caps%2C125&sr=8-1)
+* [Design-Patterns-Elements-Reusable-Object-Oriented](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612/ref=sr_1_1?crid=MY5ACIVMVDYM&keywords=design+patterns&qid=1644530558&sprefix=design+patterns%2Caps%2C137&sr=8-1)
+* [Clean-Code-Handbook-Software-Craftsmanship](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?crid=1YD3GUKA6XL7K&keywords=clean+code&qid=1644529913&sprefix=clean+code%2Caps%2C119&sr=8-1)
+* [Clean-Architecture-Craftsmans-Software-Structure](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_1?keywords=clean+architecture+by+robert+c.+martin&qid=1644530474&sprefix=clean+archi%2Caps%2C113&sr=8-1)
 
 ## Python books
 
