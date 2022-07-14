@@ -30,3 +30,9 @@ typing.Callable[..., int]
 >>> Factory[dict]
 typing.Callable[..., dict]
 ```
+
+## References
+
+https://stackoverflow.com/questions/46382170/how-can-i-create-my-own-parameterized-type-in-python-like-optionalt
+
+https://stackoverflow.com/questions/72985317/how-to-make-a-custom-parametrizable-type
