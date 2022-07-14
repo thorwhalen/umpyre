@@ -1,6 +1,7 @@
 
+## Observation: Attribute names don't have to be valid python identifiers.
 
-Observation: You can have attributes that are not valid python identifiers. 
+You can have attributes that are not valid python identifiers. 
 They need to be strings, but surprisingly, they don’t need to be valid identifier 
 (as in `str.isidentifier(attribute) == True`). 
 But you won’t be able to access these attributes via “dot access”. But you can access them via `getattr` 
