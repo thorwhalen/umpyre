@@ -10,7 +10,5 @@ from operator import methodcaller
 from i2 import Pipe
 
 read_text = Pipe(Path, methodcaller('read_text'))
-write_text = Pipe(Path, methodcaller('write_text'))
 read_bytes = Pipe(Path, methodcaller('read_bytes'))
-write_bytes = Pipe(Path, methodcaller('write_bytes'))
 ```
