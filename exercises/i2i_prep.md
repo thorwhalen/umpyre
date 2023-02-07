@@ -19,7 +19,7 @@ Look for recipes and advanced uses of `dict`. Examples (off of the top of my goo
 
 ## Poke around some py2store and dol docs
 
-[py2store readme](https://github.com/i2mint/py2store/blob/master/README.md)
-[dol readme](https://github.com/i2mint/dol/blob/master/README.md)
-[dol documentation](https://i2mint.github.io/dol/)
+* [py2store readme](https://github.com/i2mint/py2store/blob/master/README.md)
+* [dol readme](https://github.com/i2mint/dol/blob/master/README.md)
+* [dol documentation](https://i2mint.github.io/dol/)
 
