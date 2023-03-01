@@ -4,7 +4,7 @@
 
 Note that [importlib.resources](https://docs.python.org/3/library/importlib.html#module-importlib.resources) is only present from Python 3.9 onwards.
 
-If you need to accomodate earlier versions, you can use the backport: [importlib.resources](https://docs.python.org/3/library/importlib.html#module-importlib.resources) (see example usage [here](https://importlib-resources.readthedocs.io/en/latest/using.html#example)).
+If you need to accomodate earlier versions, you can use the backport: [importlib_resources](https://importlib-resources.readthedocs.io/en/latest/) (see example usage [here](https://importlib-resources.readthedocs.io/en/latest/using.html#example)).
 
 I used to (this will end today!) do it this way:
 
@@ -27,14 +27,14 @@ eml = resource_bytes('email.tests.data', 'message.eml').decode('utf-8')
 But now there’s better AND faster:
 
 ```python
-from importlib_resources import files
+from importlib.resources import files
 # Reads contents with UTF-8 encoding and returns str.
 eml = files('email.tests.data').joinpath('message.eml').read_text()
 ```
 
 ## Future proof it
 
-If you're in 3.9, just use builtin `importlib.resource` instead.
+If you're in 3.9, just use builtin `importlib.resource`.
 
 If you're in versions lower than 3.9, but want to future proof it to use the builtin when available, 
 you can do something like this:
