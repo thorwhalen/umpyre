@@ -1,14 +1,10 @@
 ## Problem: From a module, access data whose location is relative to that module’s location
 
-## Solution: importlib_resources
+## Solution: Use importlib.resources
 
-[importlib_resources](https://importlib-resources.readthedocs.io/) is in standard lib.
+Note that [importlib.resources](https://docs.python.org/3/library/importlib.html#module-importlib.resources) is only present from Python 3.9 onwards.
 
-Note that [importlib_resources](https://importlib-resources.readthedocs.io/)
-is a backport for a new feature in Python 3.9: 
-[importlib.resources](https://docs.python.org/3/library/importlib.html#module-importlib.resources)
-   
-See example [here](https://importlib-resources.readthedocs.io/en/latest/using.html#example).
+If you need to accomodate earlier versions, you can use the backport: [importlib.resources](https://docs.python.org/3/library/importlib.html#module-importlib.resources) (see example usage [here](https://importlib-resources.readthedocs.io/en/latest/using.html#example)).
 
 I used to (this will end today!) do it this way:
 
@@ -48,7 +44,6 @@ try:
 except ImportError:
     from importlib_resources import files  # pip install importlib_resources
 ```
-
 
 ## Example usage
 
