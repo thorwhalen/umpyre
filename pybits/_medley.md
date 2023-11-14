@@ -6,7 +6,7 @@ If you compress the same data at different times, the timestamps will be differe
 
 Consider this:
 
-```
+```python
 import gzip
 import time
 data = b'hello'
